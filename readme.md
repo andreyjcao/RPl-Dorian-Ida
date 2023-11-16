@@ -6,7 +6,7 @@ If you use this template for research, please [cite it](template_reference.bib):
 ## Contributors
 
 - First Name Last Name\*, email address, @githubname, ORCID link, affiliated institution(s)
-- First Name Last Name, email address, @githubname, ORCID link, affiliated institution(s)
+- Andrey Cao, acao@middlebury.edu, @andreyjcao, ORCID link, affiliated institution(s)
 
 \* Corresponding author and creator
 
