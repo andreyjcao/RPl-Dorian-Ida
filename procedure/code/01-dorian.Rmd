@@ -6,7 +6,7 @@ output: html_document
 ---
 
 # Sharpie vs Hurricane Dorian on Twitter
-Author: Joseph Holler
+Author: Joseph Holler, Andrey Cao
 Created: Fall 2019
 Updated: Fall 2021
 
