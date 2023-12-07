@@ -1,14 +1,11 @@
 If you use this template for research, please [cite it](template_reference.bib):
 > Kedron, P., & Holler, J. (2023). Template for Reproducible and Replicable Research in Human-Environment and Geographical Sciences. https://doi.org/10.17605/OSF.IO/W29MQ
 
-# Title of Study
+# Replication of Dorian Twitter Study
 
 ## Contributors
 
-- First Name Last Name\*, email address, @githubname, ORCID link, affiliated institution(s)
-- Andrey Cao, acao@middlebury.edu, @andreyjcao, ORCID link, affiliated institution(s)
-
-\* Corresponding author and creator
+- Andrey Cao, acao@middlebury.edu, [@andreyjcao](https://github.com/andreyjcao), Middlebury College (Class of 2025)
 
 ## Abstract
 
@@ -69,7 +66,7 @@ The data, procedures, and results of this repository are outlined in three table
 - Results: [results/results_index.csv](results/results_index.csv)
 
 Important local **documents** include:
-- Pre-analysis plan: [docs/report/preanalysis.pdf](docs/report/preanalysis.pdf)
+- Pre-analysis plan: [docs/report/preanalysis.md](docs/report/preanalysis.md)
 - Study report: [docs/report/report.pdf](docs/report/report.pdf)
 - Manuscript: [docs/manuscript/manuscript.pdf](docs/manuscript/manuscript.pdf)
 - Presentation: [docs/presentation/presentation.pdf](docs/presentation/presentation.pdf)
