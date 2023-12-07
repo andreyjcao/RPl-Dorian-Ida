@@ -9,13 +9,14 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Planned Revisions and Replication of 
+# Planned Revisions and Replication of the Dorian Twitter Study
 
 Author: Andrey (Andy) Cao
 
 ## Analysis
 
-We will conduct a replicability 
+We will conduct a replication study of the Dorian Twitter study using data from Hurrican Ida.
+One aspect of the 
 
 
 
