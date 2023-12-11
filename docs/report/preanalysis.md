@@ -11,14 +11,11 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Planned Revisions and Replication of the Dorian Twitter Study
 
-Author: Andrey (Andy) Cao
 
 ## Analysis
 
 We will conduct a replication study of the Dorian Twitter study using data from Hurrican Ida.
 One aspect of the 
-
-
 
 To better the reproducibility study of Malcomb (2014), I will be expanding the written analysis and more directly addressing discrepancies between the original study and the reproduction. 
 
@@ -48,10 +45,8 @@ If the code and the discussion addresses the inconsistent labeling of the origin
 
 ### Authors
 
-- First Name Last Name\*, email address, @githubname, ORCID link, affiliated institution(s)
+- Andrey (Andy) Cao, acao@middlebury.edu, [@andreyjcao](https://github.com/andreyjcao), Middlebury College (Class of 2025)
 - First Name Last Name, email address, @githubname, ORCID link, affiliated institution(s)
-
-\* Corresponding author and creator
 
 ### Abstract
 
@@ -64,23 +59,22 @@ This study is a *replication* of:
 
 > citation to prior study
 
-A graphical abstract of the study could also be included as an image here.
 
 ### Study metadata
 
 - `Key words`: Comma-separated list of keywords (tags) for searchability. Geographers often use one or two keywords each for: theory, geographic context, and methods.
 - `Subject`: select from the [BePress Taxonomy](http://digitalcommons.bepress.com/cgi/viewcontent.cgi?article=1008&context=reference)
-- `Date created`: date when project was started
-- `Date modified`: date of most recent revision
+- `Date created`: Replication started November 16, 2023
+- `Date modified`: December 14, 2023
 - `Spatial Coverage`: Specify the geographic extent of your study. This may be a place name and link to a feature in a gazetteer like GeoNames or OpenStreetMap, or a well known text (WKT) representation of a bounding box.
 - `Spatial Resolution`: Specify the spatial resolution as a scale factor, description of the level of detail of each unit of observation (including administrative level of administrative areas), and/or or distance of a raster GRID size
 - `Spatial Reference System`: Specify the geographic or projected coordinate system for the study, e.g. EPSG:4326
 - `Temporal Coverage`: Specify the temporal extent of your study---i.e. the range of time represented by the data observations.
-- `Temporal Resolution`: Specify the temporal resolution of your study---i.e. the duration of time for which each observation represents or the revisit period for repeated observations
-- `Funding Name`: name of funding for the project
-- `Funding Title`: title of project grant
-- `Award info URI`: web address for award information
-- `Award number`: award number
+- `Temporal Resolution`: Specify the temporal resolution of your study---i.e. the duration of time for which each observation represents or the revisit period for repeated observations 
+- `Funding Name`: n/a
+- `Funding Title`: n/a
+- `Award info URI`: n/a
+- `Award number`: n/a
 
 #### Original study spatio-temporal metadata
 
@@ -92,7 +86,7 @@ A graphical abstract of the study could also be included as an image here.
 
 ## Study design
 
-Describe how the study relates to prior literature, e.g. is it a **original study**, **meta-analysis study**, **reproduction study**, **reanalysis study**, or **replication study**?
+Describe how the study relates to prior literature, **replication study**
 
 Also describe the original study archetype, e.g. is it **observational**, **experimental**, **quasi-experimental**, or **exploratory**?
 
