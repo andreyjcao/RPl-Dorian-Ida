@@ -1,4 +1,4 @@
-- `Title`: Title of data source
+- `Title`: Twitter Data (Dorian_raw)
 - `Abstract`: Brief description of the data source
 - `Spatial Coverage`: Specify the geographic extent of your study. This may be a place name and link to a feature in a gazetteer like GeoNames or OpenStreetMap, or a well known text (WKT) representation of a bounding box.
 - `Spatial Resolution`: Specify the spatial resolution as a scale factor, description of the level of detail of each unit of observation (including administrative level of administrative areas), and/or or distance of a raster GRID size
@@ -11,8 +11,8 @@
   - stopping criteria for data collection and sampling (e.g. sample size, time elapsed)
   - de-identification / anonymization
   - experimental manipulation
-- `Distribution`: Describe who will make the data available and how?
-- `Constraints`: Legal constraints for *access* or *use* to protect *privacy* or *intellectual property rights*
+- `Distribution`: Cannot be distributed publicly, contact for access
+- `Constraints`: Legal constraints for privacy, X/Twitter data cannot be distributed publicly for user privacy
 - `Data Quality`: State any planned quality assessment
 - `Variables`: For each variable, enter the following information. If you have two or more variables per data source, you may want to present this information in table form (shown below)
   - `Label`: variable name as used in the data or code
