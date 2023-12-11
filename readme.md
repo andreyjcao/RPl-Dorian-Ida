@@ -19,19 +19,19 @@ A graphical abstract of the study could also be included as an image here.
 
 ## Study Metadata
 
-- `Key words`: Comma-separated list of keywords (tags) for searchability. Geographers often use one or two keywords each for: theory, geographic context, and methods.
+- `Key words`: hurricane
 - `Subject`: select from the [BePress Taxonomy](http://digitalcommons.bepress.com/cgi/viewcontent.cgi?article=1008&context=reference)
-- `Date created`: date when project was started
-- `Date modified`: date of most recent revision
-- `Spatial Coverage`: Specify the geographic extent of your study. This may be a place name and link to a feature in a gazetteer like GeoNames or OpenStreetMap, or a well known text (WKT) representation of a bounding box.
-- `Spatial Resolution`: Specify the spatial resolution as a scale factor, description of the level of detail of each unit of observation (including administrative level of administrative areas), and/or or distance of a raster GRID size
-- `Spatial Reference System`: Specify the geographic or projected coordinate system for the study
-- `Temporal Coverage`: Specify the temporal extent of your study---i.e. the range of time represented by the data observations.
-- `Temporal Resolution`: Specify the temporal resolution of your study---i.e. the duration of time for which each observation represents or the revisit period for repeated observations
-- `Funding Name`: name of funding for the project
-- `Funding Title`: title of project grant
-- `Award info URI`: web address for award information
-- `Award number`: award number
+- `Date created`: 2023-11-16
+- `Date modified`: 2023-12-15
+- `Spatial Coverage`: United States?
+- `Spatial Resolution`: GPS coordinates/counties (and county equivalents)
+- `Spatial Reference System`: Specify the geographic or projected coordinate system for the study (we also used a census API)
+- `Temporal Coverage`: 2021-08-29 to 2021-09-10
+- `Temporal Resolution`: Tweets are measured to the second (day hour:minute:second)
+- `Funding Name`: n/a
+- `Funding Title`: n/a
+- `Award info URI`: n/a
+- `Award number`: n/a
 
 ## Related to
 
