@@ -1,10 +1,10 @@
-- `Title`: Twitter Data (Dorian_raw)
-- `Abstract`: Brief description of the data source
-- `Spatial Coverage`: Specify the geographic extent of your study. This may be a place name and link to a feature in a gazetteer like GeoNames or OpenStreetMap, or a well known text (WKT) representation of a bounding box.
-- `Spatial Resolution`: Specify the spatial resolution as a scale factor, description of the level of detail of each unit of observation (including administrative level of administrative areas), and/or or distance of a raster GRID size
-- `Spatial Reference System`: Specify the geographic or projected coordinate system for the study
-- `Temporal Coverage`: Specify the temporal extent of your study---i.e. the range of time represented by the data observations.
-- `Temporal Resolution`: Specify the temporal resolution of your study---i.e. the duration of time for which each observation represents or the revisit period for repeated observations
+- `Title`: X/Twitter Data (Ida)
+- `Abstract`: Tweet data during Hurricane Ida (2021)
+- `Spatial Coverage`:  United States? Specify the geographic extent of your study. This may be a place name and link to a feature in a gazetteer like GeoNames or OpenStreetMap, or a well known text (WKT) representation of a bounding box.
+- `Spatial Resolution`: GPS coordinates? Specify the spatial resolution as a scale factor, description of the level of detail of each unit of observation (including administrative level of administrative areas), and/or or distance of a raster GRID size
+- `Spatial Reference System`: GPS? Specify the geographic or projected coordinate system for the study
+- `Temporal Coverage`: 2021-08-29 to 2021-09-10
+- `Temporal Resolution`: Tweets are measured to the second (day hour:minute:second)
 - `Lineage`: Describe and/or cite data sources and/or methodological steps taken or planned to create this data source, e.g.:
   - sampling scheme, including spatial sampling
   - target sample size and method for determining sample size
@@ -13,7 +13,7 @@
   - experimental manipulation
 - `Distribution`: Cannot be distributed publicly, contact for access
 - `Constraints`: Legal constraints for privacy, X/Twitter data cannot be distributed publicly for user privacy
-- `Data Quality`: State any planned quality assessment
+- `Data Quality`: n/a
 - `Variables`: For each variable, enter the following information. If you have two or more variables per data source, you may want to present this information in table form (shown below)
   - `Label`: variable name as used in the data or code
   - `Alias`: intuitive natural language name
@@ -26,5 +26,11 @@
 
 | Label | Alias | Definition | Type | Accuracy | Domain | Missing Data Value(s) | Missing Data Frequency |
 | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
-| variable1 | ... | ... | ... | ... | ... | ... | ... |
-| variable2 | ... | ... | ... | ... | ... | ... | ... |
+| user_id | unique user identifier | ... | ... | ... | ... | ... | ... |
+| status_id | ... | ... | ... | ... | ... | ... | ... |
+| created_at | time of tweet | ... | ... | ... | ... | ... | ... |
+| screen_name | X username | ... | ... | ... | ... | ... | ... |
+| text | text of tweet | ... | ... | ... | ... | ... | ... |
+| source | ... | ... | ... | ... | ... | ... | ... |
+| screen_name | ... | ... | ... | ... | ... | ... | ... |
+| screen_name | ... | ... | ... | ... | ... | ... | ... |
