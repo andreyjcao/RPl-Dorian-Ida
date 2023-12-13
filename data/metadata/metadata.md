@@ -1,19 +1,24 @@
-- `Title`: X/Twitter Data (Ida)
+- `Title`: X/Twitter Data (Hurricane Ida)
 - `Abstract`: Tweet data during Hurricane Ida (2021)
 - `Spatial Coverage`:  United States? Specify the geographic extent of your study. This may be a place name and link to a feature in a gazetteer like GeoNames or OpenStreetMap, or a well known text (WKT) representation of a bounding box.
 - `Spatial Resolution`: GPS coordinates? Specify the spatial resolution as a scale factor, description of the level of detail of each unit of observation (including administrative level of administrative areas), and/or or distance of a raster GRID size
 - `Spatial Reference System`: GPS? Specify the geographic or projected coordinate system for the study
 - `Temporal Coverage`: 2021-08-29 to 2021-09-10
 - `Temporal Resolution`: Tweets are measured to the second (day hour:minute:second)
-- `Lineage`: Describe and/or cite data sources and/or methodological steps taken or planned to create this data source, e.g.:
+- `Lineage`: However, due to new restraints from X/Twitter, we can no longer use the 
+-
+- Describe and/or cite data sources and/or methodological steps taken or planned to create this data source, e.g.:
   - sampling scheme, including spatial sampling
   - target sample size and method for determining sample size
   - stopping criteria for data collection and sampling (e.g. sample size, time elapsed)
   - de-identification / anonymization
   - experimental manipulation
-- `Distribution`: Cannot be distributed publicly, contact for access
+ 
+  - 
+- `Distribution`: Cannot be distributed publicly, contact researcher for access
 - `Constraints`: Legal constraints for privacy, X/Twitter data cannot be distributed publicly for user privacy
 - `Data Quality`: n/a
+
 - `Variables`: For each variable, enter the following information. If you have two or more variables per data source, you may want to present this information in table form (shown below)
   - `Label`: variable name as used in the data or code
   - `Alias`: intuitive natural language name
