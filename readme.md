@@ -1,7 +1,4 @@
-If you use this template for research, please [cite it](template_reference.bib):
-> Kedron, P., & Holler, J. (2023). Template for Reproducible and Replicable Research in Human-Environment and Geographical Sciences. https://doi.org/10.17605/OSF.IO/W29MQ
-
-# Replication of Dorian Twitter Study
+# Replication of Hurricane Dorian Twitter Study with Hurricane Ida Data
 
 ## Contributors
 
@@ -9,40 +6,25 @@ If you use this template for research, please [cite it](template_reference.bib):
 
 ## Abstract
 
-Write a brief abstract about your research project.
-If the project is a reproduction or replication study, include the full citation with a statement
-This study is a *reproduction/replication* of:
+*Write a brief abstract about your research project.*
 
-> citation to prior study
-
-A graphical abstract of the study could also be included as an image here.
+This study is a replication of this [study](https://github.com/GIS4DEV/OR-Dorian) conducted by [Professor Joseph Holler](https://github.com/josephholler)
 
 ## Study Metadata
 
-- `Key words`: hurricane
+- `Key words`: hurricane, ida, twitter, x
 - `Subject`: select from the [BePress Taxonomy](http://digitalcommons.bepress.com/cgi/viewcontent.cgi?article=1008&context=reference)
 - `Date created`: 2023-11-16
 - `Date modified`: 2023-12-15
-- `Spatial Coverage`: United States?
-- `Spatial Resolution`: GPS coordinates/counties (and county equivalents)
-- `Spatial Reference System`: Specify the geographic or projected coordinate system for the study (we also used a census API)
+- `Spatial Coverage`: United States
+- `Spatial Resolution`: GPS coordinates
+- `Spatial Reference System`: *Specify the geographic or projected coordinate system for the study (we also used a census API)*
 - `Temporal Coverage`: 2021-08-29 to 2021-09-10
-- `Temporal Resolution`: Tweets are measured to the second (day hour:minute:second)
+- `Temporal Resolution`: Tweets are measured to the second (formatted as 'day hour:minute:second')
 - `Funding Name`: n/a
 - `Funding Title`: n/a
 - `Award info URI`: n/a
 - `Award number`: n/a
-
-## Related to
-
-- `OSF Project`:
-- `Pre-analysis Registration`:
-- `Post-analysis Report Registration`:
-- `Preprint`:
-- `Conference Presentation`:
-- `Publication`:
-- `Prior Study`:
-- `...`:
 
 ## Metadata for access
 
@@ -75,5 +57,4 @@ Important local **documents** include:
 
 The [template_readme.md](template_readme.md) file contains more information on the design of this template and references used in the design.
 The [Template_LICENSE](Template_LICENSE) file provides the BSD 3-Clause license for using this template.
-To cite the template, please use [template_reference.bib](template_reference.bib) or:
-> Kedron, P., & Holler, J. (2023). Template for Reproducible and Replicable Research in Human-Environment and Geographical Sciences. https://doi.org/10.17605/OSF.IO/W29MQ
+> Kedron, P., & Holler, J. (2023). Template for Reproducible and Replicable Research in Human-Environment and Geographical Sciences. [https://doi.org/10.17605/OSF.IO/W29MQ](https://doi.org/10.17605/OSF.IO/W29MQ)
