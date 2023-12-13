@@ -5,7 +5,7 @@ date: "9/1/2021"
 output: html_document
 ---
 
-# Sharpie vs Hurricane Dorian on Twitter
+# Hurricane Ida on X/Twitter
 Author: Joseph Holler, Andrey Cao
 Created: Fall 2019
 Updated: Fall 2023
@@ -17,12 +17,16 @@ tutorial on EarthLab at:
 https://www.earthdatascience.org/courses/earth-analytics/get-data-using-apis/use-twitter-api-r/
 - Michael Minn's *Basic Spatial Point Pattern Analysis in R* tutorial at: http://michaelminn.net/tutorials/r-point-analysis/
 
+## Abstract
+
 ## Set up environment
 
 Load the R project saved in the root directory of this repository, so that the
 working directory is the root directory of the repository.
 
-```{r setting it up}
+```{r setup, message = FALSE, warning = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
 # install r version from 9-10-2021
 if(!require(groundhog)){
   install.packages("groundhog")
@@ -61,7 +65,7 @@ package_check <- lapply(
 )
 ```
 
-```{r}
+```{r upload crucial packages}
 
 # Install the 'remotes' package if you haven't already
 install.packages("remotes")
@@ -273,15 +277,10 @@ tevent_raw4 <- readRDS(here("data", "raw", "private", "tevent_raw4.RDS"))
 ```
 
 ```{r bind-original}
-ida_raw <- rbind(tevent_raw1, tevent_raw2, tevent_raw3, tevent_raw4) #union operation, table union, set union
-ida_raw_new <- ida_raw %>% distinct(status_id, .keep_all = TRUE)
+ida_raw_all <- rbind(tevent_raw1, tevent_raw2, tevent_raw3, tevent_raw4) #includes duplicates
+ida_raw <- ida_raw_all %>% distinct(status_id, .keep_all = TRUE) #excludes duplicates
 ```
 
-```{r union-original}
-tevent_raw1and2 <- union(tevent_raw1, tevent_raw2)
-tevent_raw1and2and3 <- union(tevent_raw1and2, tevent_raw3)
-ida_raw <- union(tevent_raw1and2and3, tevent_raw4)
-```
 
 ## Process geographic data in tweets 
 
@@ -369,19 +368,6 @@ ida_tweets_by_hour <- ts_data(ida, by = "hours")
 ts_plot(ida, by = "hours")
 ```
 
-# Network Analysis
-
-Create a network data frame. 
-Other options for 'edges' in the network include mention, retweet, and reply
-The graph does not look good (understatement), because of poor data regarding quotes.
-It would be more interesting to visualize retweets, but we did not search for
-them, as we were focusing on original content.
-
-```{r network}
-ida_network <- network_graph(ida, c("quote")) #who is quoting who, graphing tweets from a city
-plot.igraph(ida_network)
-```
-
 # Text Analysis
 
 ## Clean the text data
@@ -410,7 +396,6 @@ stop_words <- stop_words %>%
   add_row(word = "t.co", lexicon = "SMART") %>%
   add_row(word = "hurricane", lexicon = "Search") %>%
   add_row(word = "ida", lexicon = "Search") #%>%
-#  add_row(word = "sharpiegate", lexicon = "Search")
 
 # delete stop words from dorianWords with an anti_join
 ida_words <- anti_join(ida_words, stop_words, by="word")
@@ -517,19 +502,6 @@ saveRDS(counties, here("data", "derived", "public", "counties.RDS"))
 
 These state codes represent (). Hurricane Ida made contact with these states.
 
-```{r save-counties-ida}
-counties <- filter(
-  counties,
-  STATEFP %in% c(
-    "54", "51", "50", "47", "45", "44", "42", "39", "37", "36", "05", "01",
-    "34", "33", "29", "28", "25", "24", "23", "22", "21", "18", "17", "13",
-    "12", "11", "10", "09"
-  )
-)
-# alternatively, one could select by location using original search criteria...
-
-saveRDS(counties, here("data", "derived", "public", "counties.RDS"))
-```
 
 ### Load counties
 
@@ -587,45 +559,6 @@ counties <- counties %>%
   mutate(ida = replace_na(ida, 0)) # replace nulls with 0's
 
 rm(ida_by_county)
-```
-
-```{r join-tweets-to-counties}
-ida_sf <- dorian %>%
-  st_as_sf(coords = c("lng", "lat"), crs = 4326) %>% # make point geometries
-  st_transform(4269) %>% # transform to NAD 1983
-  st_join(select(counties, GEOID)) # spatially join counties to each tweet
-
-ida_by_county <- dorian_sf %>%
-  st_drop_geometry() %>% # drop geometry / make simple table
-  group_by(GEOID) %>% # group by county using GEOID
-  summarise(dorian = n()) # count # of tweets
-
-counties <- counties %>%
-  left_join(dorian_by_county, by = "GEOID") %>% # join count of tweets to counties
-  mutate(dorian = replace_na(dorian, 0)) # replace nulls with 0's
-
-rm(dorian_by_county)
-
-# Repeat the workflow above for tweets in November
-
-nov_by_county <- november %>%
-  st_as_sf(coords = c("lng", "lat"), crs = 4326) %>%
-  st_transform(4269) %>%
-  st_join(select(counties, GEOID)) %>%
-  st_drop_geometry() %>%
-  group_by(GEOID) %>%
-  summarise(nov = n())
-
-counties <- counties %>%
-  left_join(nov_by_county, by = "GEOID") %>%
-  mutate(nov = replace_na(nov, 0))
-
-counties <- counties %>%
-  mutate(dorrate = dorian / POPESTIMATE * 10000) %>% # dorrate is tweets per 10,000
-  mutate(ndti = (dorian - nov) / (dorian + nov)) %>% # normalized diff tweet index
-  mutate(ndti = replace_na(ndti, 0)) # replace NULLs with 0's
-
-rm(nov_by_county)
 
 # save counties geographic data with derived tweet rates
 saveRDS(counties, here("data", "derived", "public", "counties_tweet_counts.RDS"))
@@ -742,10 +675,17 @@ ggplot() +
     aesthetics = "fill"
   ) +
   guides(fill = guide_legend(title = "Hot Spots")) +
-  labs(title = "Clusters of Hurricane Dorian Twitter Activity") +
+  labs(title = "Clusters of Hurricane Ida Twitter Activity") +
   theme(
     plot.title = element_text(hjust = 0.5),
     axis.title.x = element_blank(),
     axis.title.y = element_blank()
   )
 ```
+
+
+
+
+
+
+
