@@ -266,8 +266,21 @@ Save the two `.RDS` files to the `data/raw/private` folder and then load the
 ??data with the code block below.
 
 ```{r load-original}
-dorian_raw <- readRDS(here("data", "raw", "private", "dorian_raw.RDS"))
-november_raw <- readRDS(here("data", "raw", "private", "november_raw.RDS"))
+tevent_raw1 <- readRDS(here("data", "raw", "private", "tevent_raw.RDS"))
+tevent_raw2 <- readRDS(here("data", "raw", "private", "tevent_raw2.RDS"))
+tevent_raw3 <- readRDS(here("data", "raw", "private", "tevent_raw3.RDS"))
+tevent_raw4 <- readRDS(here("data", "raw", "private", "tevent_raw4.RDS"))
+```
+
+```{r bind-original}
+ida_raw <- rbind(tevent_raw1, tevent_raw2, tevent_raw3, tevent_raw4) #union operation, table union, set union
+ida_raw_new <- ida_raw %>% distinct(status_id, .keep_all = TRUE)
+```
+
+```{r union-original}
+tevent_raw1and2 <- union(tevent_raw1, tevent_raw2)
+tevent_raw1and2and3 <- union(tevent_raw1and2, tevent_raw3)
+ida_raw <- union(tevent_raw1and2and3, tevent_raw4)
 ```
 
 ## Process geographic data in tweets 
@@ -283,7 +296,7 @@ If you have these, it indicates that you exhausted the more precise tweets
 in your search parameters and are including locations based on user profiles
 
 ```{r count-place-types}
-count(dorian_raw, place_type)
+count(ida_raw, place_type)
 ```
 
 ### Convert geographic information into lat/long coordinates
@@ -295,29 +308,29 @@ been processed.
 ```{r lat-long}
 # convert GPS coordinates into lat and lng columns
 # do not use geo_coords! Lat/Lng will be inverted
-dorian <- lat_lng(dorian_raw, coords = c("coords_coords"))
-november <- lat_lng(november_raw, coords = c("coords_coords"))
+ida <- lat_lng(ida_raw, coords = c("coords_coords"))
+# november <- lat_lng(november_raw, coords = c("coords_coords"))
 
 # select any tweets with lat and lng columns (from GPS) or
 # designated place types of your choosing
-dorian <- subset(
-  dorian,
+ida <- subset(
+  ida,
   place_type == "city" | place_type == "neighborhood" |
     place_type == "poi" | !is.na(lat)
 )
 
-november <- subset(
-  november,
-  place_type == "city" | place_type == "neighborhood" |
-    place_type == "poi" | !is.na(lat)
-)
+#november <- subset(
+#  november,
+#  place_type == "city" | place_type == "neighborhood" |
+#    place_type == "poi" | !is.na(lat)
+#)
 
 # convert bounding boxes into centroids for lat and lng columns
-dorian <- lat_lng(dorian, coords = c("bbox_coords"))
-november <- lat_lng(november, coords = c("bbox_coords"))
+ida <- lat_lng(ida, coords = c("bbox_coords"))
+# november <- lat_lng(november, coords = c("bbox_coords"))
 
 # re-check counts of place types
-count(dorian, place_type)
+count(ida, place_type)
 ```
 
 ### Save processed tweets
@@ -329,18 +342,13 @@ Full Tweet data cannot be shared with the public, therefore it is stored in
 a folder ignored by Git.
 
 ```{r save-processed-tweets}
-write.table(november$status_id,
-  here("data", "derived", "public", "novemberids.txt"),
+
+write.table(ida$status_id,
+  here("data", "derived", "public", "idaids.txt"),
   append = FALSE, quote = FALSE, row.names = FALSE, col.names = FALSE
 )
 
-write.table(dorian$status_id,
-  here("data", "derived", "public", "dorianids.txt"),
-  append = FALSE, quote = FALSE, row.names = FALSE, col.names = FALSE
-)
-
-saveRDS(dorian, here("data", "derived", "private", "dorian.RDS"))
-saveRDS(november, here("data", "derived", "private", "november.RDS"))
+saveRDS(ida, here("data", "derived", "private", "ida.RDS"))
 ```
 
 ### Load processed tweets
@@ -349,8 +357,7 @@ Optionally,
 Load processed twitter data
 
 ```{r load-processed-tweets, eval = FALSE }
-dorian <- readRDS(here("data", "derived", "private", "dorian.RDS"))
-november <- readRDS(here("data", "derived", "private", "november.RDS"))
+ida <- readRDS(here("data", "derived", "private", "ida.RDS"))
 ```
 
 # Temporal Analysis
@@ -358,8 +365,8 @@ november <- readRDS(here("data", "derived", "private", "november.RDS"))
 Create a temporal data frame and graph it
 
 ```{r temporal}
-dorian_tweets_by_hour <- ts_data(dorian, by = "hours")
-ts_plot(dorian, by = "hours")
+ida_tweets_by_hour <- ts_data(ida, by = "hours")
+ts_plot(ida, by = "hours")
 ```
 
 # Network Analysis
@@ -371,8 +378,8 @@ It would be more interesting to visualize retweets, but we did not search for
 them, as we were focusing on original content.
 
 ```{r network}
-dorian_network <- network_graph(dorian, c("quote"))
-plot.igraph(dorian_network)
+ida_network <- network_graph(ida, c("quote")) #who is quoting who, graphing tweets from a city
+plot.igraph(ida_network)
 ```
 
 # Text Analysis
@@ -384,15 +391,15 @@ Remove stop words and our search terms.
 
 ```{r text-processing}
 # remove urls, fancy formatting, etc. in other words, clean the text content
-dorian_text <- dorian %>%
+ida_text <- ida %>%
   select(text) %>%
   plain_tweets()
 
 # parse out words from tweet text
-dorian_words <- dorian_text %>% unnest_tokens(word, text)
+ida_words <- ida_text %>% unnest_tokens(word, text)
 
 # how many words do you have including the stop words?
-word_count <- list(before = count(dorian_words)$n)
+word_count <- list(before = count(ida_words)$n)
 
 # create list of stop words (useless words not worth analyzing)
 data("stop_words")
@@ -402,16 +409,16 @@ data("stop_words")
 stop_words <- stop_words %>%
   add_row(word = "t.co", lexicon = "SMART") %>%
   add_row(word = "hurricane", lexicon = "Search") %>%
-  add_row(word = "dorian", lexicon = "Search") %>%
-  add_row(word = "sharpiegate", lexicon = "Search")
+  add_row(word = "ida", lexicon = "Search") #%>%
+#  add_row(word = "sharpiegate", lexicon = "Search")
 
 # delete stop words from dorianWords with an anti_join
-dorian_words <- anti_join(dorian_words, stop_words, by="word")
+ida_words <- anti_join(ida_words, stop_words, by="word")
 
 # how many words after removing the stop words?
 word_count <- append(
   word_count,
-  list(after = count(dorian_words)$n)
+  list(after = count(ida_words)$n)
   )
 print(word_count)
 ```
@@ -419,7 +426,7 @@ print(word_count)
 ## Graph frequencies of words
 
 ```{r word-frequency}
-dorian_words %>%
+ida_words %>%
   count(word, sort = TRUE) %>%
   top_n(15) %>%  #deprecated; try replacing with slice_min() or slice_max()
   mutate(word = reorder(word, n)) %>%
@@ -438,7 +445,7 @@ dorian_words %>%
 
 ```{r word-association}
 # separate words and count frequency of word pair occurrence in tweets
-dorian_word_pairs <- dorian_text %>%
+ida_word_pairs <- ida_text %>%
   mutate(text = removeWords(tolower(text), stop_words$word)) %>%
   unnest_tokens(paired_words, text, token = "ngrams", n = 2) %>%
   separate(paired_words, c("word1", "word2"), sep = " ") %>%
@@ -446,22 +453,22 @@ dorian_word_pairs <- dorian_text %>%
 
 # graph a word cloud with space indicating association.
 # you may change the filter to filter more or less than pairs with 25 instances
-dorian_word_pairs %>%
-  filter(n >= 25 & !is.na(word1) & !is.na(word2)) %>%
+ida_word_pairs %>%
+  filter(n >= 50 & !is.na(word1) & !is.na(word2)) %>% #can change
   graph_from_data_frame() %>%
   ggraph(layout = "fr") +
   geom_edge_link(aes(edge_alpha = n, edge_width = n)) +
-  geom_node_point(color = "darkslategray4", size = 3) +
+  geom_node_point(color = "darkslategray4", size = 2) +
   geom_node_text(aes(label = name), vjust = 1.8, size = 3) +
   labs(
-    title = "Word Network of Tweets during Hurricane Dorian",
+    title = "Word Network of Tweets during Hurricane ida",
     x = "", y = ""
   ) +
   theme(
     plot.background = element_rect(
     fill = "grey95",
     colour = "black",
-    size = 1
+    size = .5
     ),
     legend.background = element_rect(fill = "grey95")
   )
@@ -494,7 +501,23 @@ select only the states you want, with FIPS state codes
 look up fips codes here: 
 https://en.wikipedia.org/wiki/Federal_Information_Processing_Standard_state_code 
 
-```{r save-counties}
+```{r save-counties-dorian}
+counties <- filter(
+  counties,
+  STATEFP %in% c(
+    "54", "51", "50", "47", "45", "44", "42", "39", "37", "36", "05", "01",
+    "34", "33", "29", "28", "25", "24", "23", "22", "21", "18", "17", "13",
+    "12", "11", "10", "09"
+  )
+)
+# alternatively, one could select by location using original search criteria...
+
+saveRDS(counties, here("data", "derived", "public", "counties.RDS"))
+```
+
+These state codes represent (). Hurricane Ida made contact with these states.
+
+```{r save-counties-ida}
 counties <- filter(
   counties,
   STATEFP %in% c(
@@ -530,7 +553,7 @@ ggplot() +
   scale_fill_brewer(palette = "GnBu") +
   guides(fill = guide_legend(title = "Population Density")) +
   geom_point(
-    data = dorian, aes(x = lng, y = lat),
+    data = ida, aes(x = lng, y = lat),
     colour = "purple", alpha = 0.1, size = 1
   ) +
   labs(title = "Tweet Locations During Hurricane Dorian") +
@@ -549,12 +572,30 @@ Spatially join Dorian and November tweets to counties and save counties
 as `counties_tweet_counts.RDS`
 
 ```{r join-tweets-to-counties}
-dorian_sf <- dorian %>%
+ida_sf <- ida %>%
   st_as_sf(coords = c("lng", "lat"), crs = 4326) %>% # make point geometries
   st_transform(4269) %>% # transform to NAD 1983
   st_join(select(counties, GEOID)) # spatially join counties to each tweet
 
-dorian_by_county <- dorian_sf %>%
+ida_by_county <- ida_sf %>%
+  st_drop_geometry() %>% # drop geometry / make simple table
+  group_by(GEOID) %>% # group by county using GEOID
+  summarise(ida = n()) # count # of tweets
+
+counties <- counties %>%
+  left_join(ida_by_county, by = "GEOID") %>% # join count of tweets to counties
+  mutate(ida = replace_na(ida, 0)) # replace nulls with 0's
+
+rm(ida_by_county)
+```
+
+```{r join-tweets-to-counties}
+ida_sf <- dorian %>%
+  st_as_sf(coords = c("lng", "lat"), crs = 4326) %>% # make point geometries
+  st_transform(4269) %>% # transform to NAD 1983
+  st_join(select(counties, GEOID)) # spatially join counties to each tweet
+
+ida_by_county <- dorian_sf %>%
   st_drop_geometry() %>% # drop geometry / make simple table
   group_by(GEOID) %>% # group by county using GEOID
   summarise(dorian = n()) # count # of tweets
@@ -602,7 +643,7 @@ ggplot() +
     aes(fill = cut_interval(dorrate, 5)), color = "grey", lwd=0.01) +
   scale_fill_brewer(palette = "GnBu") +
   guides(fill = guide_legend(title = "Normalized Difference Tweet Index")) +
-  labs(title = "Hurricane Dorian Twitter Activity") +
+  labs(title = "Hurricane Ida Twitter Activity") +
   theme(
     plot.title = element_text(hjust = 0.5),
     axis.title.x = element_blank(),

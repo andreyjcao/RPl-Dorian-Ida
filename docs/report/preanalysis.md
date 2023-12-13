@@ -14,8 +14,14 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Analysis
 
-We will conduct a replication study of the Dorian Twitter study using data from Hurrican Ida.
+We will conduct a replication study of the Dorian Twitter study using data from Hurricane Ida.
 One aspect of the 
+
+Adjust the computational environment
+
+bind RDS files to make replication easier
+
+Change normalization process
 
 To better the reproducibility study of Malcomb (2014), I will be expanding the written analysis and more directly addressing discrepancies between the original study and the reproduction. 
 
