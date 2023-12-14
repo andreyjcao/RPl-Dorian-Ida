@@ -13,7 +13,7 @@ This study is a replication of this [study](https://github.com/GIS4DEV/OR-Dorian
 ## Study Metadata
 
 - `Key words`: hurricane, ida, twitter, x
-- `Subject`: select from the [BePress Taxonomy](http://digitalcommons.bepress.com/cgi/viewcontent.cgi?article=1008&context=reference)
+- `Subject`: Social and Behavioral Sciences: Geography: Geographic Information Sciences
 - `Date created`: 2023-11-16
 - `Date modified`: 2023-12-15
 - `Spatial Coverage`: United States
