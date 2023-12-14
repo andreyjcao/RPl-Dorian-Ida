@@ -1,7 +1,7 @@
 ---
-title: "Sharpie vs Hurricane Dorian on Twitter"
-author: "Joseph Holler"
-date: "9/1/2021"
+title: "Hurricane Ida on Twitter"
+author: "Joseph Holler, Andrey Cao"
+date: "12/15/2023"
 output: html_document
 ---
 
@@ -308,7 +308,6 @@ been processed.
 # convert GPS coordinates into lat and lng columns
 # do not use geo_coords! Lat/Lng will be inverted
 ida <- lat_lng(ida_raw, coords = c("coords_coords"))
-# november <- lat_lng(november_raw, coords = c("coords_coords"))
 
 # select any tweets with lat and lng columns (from GPS) or
 # designated place types of your choosing
@@ -318,15 +317,8 @@ ida <- subset(
     place_type == "poi" | !is.na(lat)
 )
 
-#november <- subset(
-#  november,
-#  place_type == "city" | place_type == "neighborhood" |
-#    place_type == "poi" | !is.na(lat)
-#)
-
 # convert bounding boxes into centroids for lat and lng columns
 ida <- lat_lng(ida, coords = c("bbox_coords"))
-# november <- lat_lng(november, coords = c("bbox_coords"))
 
 # re-check counts of place types
 count(ida, place_type)
@@ -463,6 +455,8 @@ ida_word_pairs %>%
 
 First, you will need a Census API. You can sign up for one here: https://api.census.gov/data/key_signup.html
 
+cc327081abedfb1c97716df45c667ba54c59ee57
+
 ```{r census-api}
 census_api_key(dlgInput(
   "Enter a Census API Key",
@@ -486,6 +480,8 @@ select only the states you want, with FIPS state codes
 look up fips codes here: 
 https://en.wikipedia.org/wiki/Federal_Information_Processing_Standard_state_code 
 
+We chose to observe the Eastern coast of the continental United States to cover the area affected by Hurricane Ida and surrounding states.
+
 ```{r save-counties-dorian}
 counties <- filter(
   counties,
@@ -499,8 +495,6 @@ counties <- filter(
 
 saveRDS(counties, here("data", "derived", "public", "counties.RDS"))
 ```
-
-These state codes represent (). Hurricane Ida made contact with these states.
 
 
 ### Load counties

@@ -1,5 +1,5 @@
 ---
-title: "cao-analysis-plan"
+title: "cao-preanalysis"
 author: "Andrey Cao"
 date: "2023-12-7"
 output: html_document
@@ -52,43 +52,37 @@ If the code and the discussion addresses the inconsistent labeling of the origin
 ### Authors
 
 - Andrey (Andy) Cao, acao@middlebury.edu, [@andreyjcao](https://github.com/andreyjcao), Middlebury College (Class of 2025)
-- First Name Last Name, email address, @githubname, ORCID link, affiliated institution(s)
 
 ### Abstract
 
-Write a brief abstract about your research project.
+*Write a brief abstract about your research project.*
 
-If the project is a reproduction or replication study, include a declaration of the study type with a full reference to the original study.
-For example:
-
-This study is a *replication* of:
-
-> citation to prior study
+This study is a replication of this [study](https://github.com/GIS4DEV/OR-Dorian) conducted by [Professor Joseph Holler](https://github.com/josephholler)
 
 
 ### Study metadata
 
-- `Key words`: Comma-separated list of keywords (tags) for searchability. Geographers often use one or two keywords each for: theory, geographic context, and methods.
+- `Key words`: hurricane, ida, twitter, x
 - `Subject`: select from the [BePress Taxonomy](http://digitalcommons.bepress.com/cgi/viewcontent.cgi?article=1008&context=reference)
 - `Date created`: Replication started November 16, 2023
-- `Date modified`: December 14, 2023
-- `Spatial Coverage`: Specify the geographic extent of your study. This may be a place name and link to a feature in a gazetteer like GeoNames or OpenStreetMap, or a well known text (WKT) representation of a bounding box.
-- `Spatial Resolution`: Specify the spatial resolution as a scale factor, description of the level of detail of each unit of observation (including administrative level of administrative areas), and/or or distance of a raster GRID size
+- `Date modified`: December 15, 2023
+- `Spatial Coverage`: continental United States
+- `Spatial Resolution`: GPS coordinates
 - `Spatial Reference System`: Specify the geographic or projected coordinate system for the study, e.g. EPSG:4326
-- `Temporal Coverage`: Specify the temporal extent of your study---i.e. the range of time represented by the data observations.
-- `Temporal Resolution`: Specify the temporal resolution of your study---i.e. the duration of time for which each observation represents or the revisit period for repeated observations 
+- `Temporal Coverage`: 2021-08-29 to 2021-9-10
+- `Temporal Resolution`: Tweets are measured to the second (formatted as 'day hour:minute:second')
 - `Funding Name`: n/a
 - `Funding Title`: n/a
 - `Award info URI`: n/a
 - `Award number`: n/a
 
-#### Original study spatio-temporal metadata
+#### Original study spatio-temporal metadata (Hurricane Dorian)
 
-- `Spatial Coverage`: extent of original study
-- `Spatial Resolution`: resolution of original study
+- `Spatial Coverage`: continental United States
+- `Spatial Resolution`: GPS coordinates
 - `Spatial Reference System`: spatial reference system of original study
-- `Temporal Coverage`: temporal extent of original study
-- `Temporal Resolution`: temporal resolution of original study
+- `Temporal Coverage`: 2019-09-05 to 2019-09-10
+- `Temporal Resolution`: Tweets are measured to the second (formatted as 'day hour:minute:second')
 
 ## Study design
 
@@ -233,6 +227,8 @@ These include:
 
 ### Data transformations
 
+Starting from the raw files, we 
+
 Describe all data transformations planned to prepare data sources for analysis.
 This section should explain with the fullest detail possible how to transform data from the **raw** state at the time of acquisition or observation, to the pre-processed **derived** state ready for the main analysis.
 Including steps to check and mitigate sources of **bias** and **threats to validity**.
@@ -254,7 +250,7 @@ Also explain any follow-up analyses or validations.
 
 ## Results
 
-Describe how results are to be presented.
+The resulting replications should perform the 
 
 ## Discussion
 
