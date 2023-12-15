@@ -32,10 +32,9 @@
 | Label | Alias | Definition | Type | Accuracy | Domain | Missing Data Value(s) | Missing Data Frequency |
 | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
 | user_id | unique user identifier | ... | ... | ... | ... | ... | ... |
-| status_id | ... | ... | ... | ... | ... | ... | ... |
+| status_id | unique status identifier | ... | ... | ... | ... | ... | ... |
 | created_at | time of tweet | ... | ... | ... | ... | ... | ... |
-| screen_name | X username | ... | ... | ... | ... | ... | ... |
 | text | text of tweet | ... | ... | ... | ... | ... | ... |
-| place_type | ... | ... | ... | ... | ... | ... | ... |
+| place_type | place type of tweet location | ... | ... | ... | ... | ... | ... |
 | coords_coords | ... | ... | ... | ... | ... | ... | ... |
 | bbox_coords | ... | ... | ... | ... | ... | ... | ... |
