@@ -13,9 +13,16 @@ knitr::opts_chunk$set(echo = TRUE)
 
 - Andrey (Andy) Cao, acao@middlebury.edu, [@andreyjcao](https://github.com/andreyjcao), Middlebury College (Class of 2025)
 
+
 ## Abstract
 
-*Write a brief abstract about your research project.*
+This original [study](https://github.com/GIS4DEV/OR-Dorian) conducted by [Professor Joseph Holler](https://github.com/josephholler) examines the impacts of natural disasters on social media communication. 
+Focusing on X/Twitter data during Hurricane Dorian, Holler (2021) replicated the methods of Wang et al (2016) for the case of the hurricane's landfall on the U.S. mainland during the 2019 Atlantic Hurricane season. 
+Holler modified the methodology for normalizing tweet data by creating a normalized Tweet difference index and extended the methodology to test for spatial clustering with the local Getis-Ord statistic. 
+This replication of Holler (2021) conducted by Cao (2023) examines X/Twitter data during Hurricane Ida in 2021. 
+As a replication study, we aimed to successfully generate the figures and type of results produced in Holler (2021) with Hurricane Ida data. 
+We found differences in the computational environment that made packages such as 'rtweet' not compatible with the code of Holler (2021). 
+Additionally, the new lack of free access to X/Twitter data led us to alter the normalization of the data to use data from the Census API. 
 
 This study is a replication of this [study](https://github.com/GIS4DEV/OR-Dorian) conducted by [Professor Joseph Holler](https://github.com/josephholler)
 
