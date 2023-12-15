@@ -54,9 +54,7 @@ This study is a replication of this [study](https://github.com/GIS4DEV/OR-Dorian
 
 ## Study design
 
-This is a replication of this [study of Hurricane Dorian](https://github.com/GIS4DEV/OR-Dorian) conducted by [Professor Joseph Holler](https://github.com/josephholler)
-
-
+This is a replication of this [study of Hurricane Dorian](https://github.com/GIS4DEV/OR-Dorian) conducted by [Professor Joseph Holler](https://github.com/josephholler). This replication 
 Also describe the original study archetype, e.g. is it **observational**, **experimental**, **quasi-experimental**, or **exploratory**?
 
 Enumerate specific **hypotheses** to be tested or **research questions** to be investigated here, and specify the type of method, statistical test or model to be used on the hypothesis or question.
@@ -75,7 +73,7 @@ Describe the **data sources** and **variables** to be used.
 Data sources may include plans for observing and recording **primary data** or descriptions of **secondary data**.
 For secondary data sources with numerous variables, the analysis plan authors may focus on documenting only the variables intended for use in the study.
 
-Primary data sources for the study are to include ... .
+Primary data sources for the study are to include files with Hurricane Ida X/Twitter data. 
 Secondary data sources for the study are to include ... .
 
 #### Primary data (tevent_raw.RDS, tevent_raw2.RDS, tevent_raw3.RDS, tevent_raw4.RDS)

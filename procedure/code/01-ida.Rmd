@@ -54,7 +54,8 @@ Additionally, the new lack of free access to X/Twitter data led us to alter the 
 
 #Study design
 
-This is a replication study of 
+This is a replication of this [study of Hurricane Dorian](https://github.com/GIS4DEV/OR-Dorian) conducted by [Professor Joseph Holler](https://github.com/josephholler). 
+
 
 # Materials and procedure
 
