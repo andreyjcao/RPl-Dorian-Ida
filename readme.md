@@ -18,7 +18,7 @@ This study is a replication of this [study](https://github.com/GIS4DEV/OR-Dorian
 - `Date modified`: 2023-12-15
 - `Spatial Coverage`: United States
 - `Spatial Resolution`: GPS coordinates
-- `Spatial Reference System`: *Specify the geographic or projected coordinate system for the study (we also used a census API)*
+- `Spatial Reference System`: NAD 1983
 - `Temporal Coverage`: 2021-08-29 to 2021-09-10
 - `Temporal Resolution`: Tweets are measured to the second (formatted as 'day hour:minute:second')
 - `Funding Name`: n/a
