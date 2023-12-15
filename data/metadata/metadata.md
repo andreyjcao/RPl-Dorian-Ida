@@ -35,5 +35,5 @@
 | created_at | time of tweet | post time measured as (day hour:minute:second) | character | to the second | (2021-08-29 10:13:47) to (2021-09-10 15:40:00) | ... | no missing data |
 | text | text of tweet | any characters contained within tweet | character | ... | ... | ... | no missing data |
 | place_type | place type of tweet location | X/Twitter geographic place type | character | based on X/Twitter categorization | city, neighborhood, poi, or NA | NA | about 94.79% of place_type missing |
-| coords_coords | coordinates | ... | ... | ... | ... | ... | ... |
-| bbox_coords | bound box coordinates | ... | ... | ... | ... | ... | ... |
+| coords_coords | coordinates | ... | ... | ... | ... | c(NA, NA) | about 99.55% of coords_coords missing |
+| bbox_coords | bounding box coordinates | ... | ... | ... | ... | c(NA, NA, NA, NA, NA, NA, NA, NA) | about 94.79% of bbox_coords missing |
