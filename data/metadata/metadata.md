@@ -1,8 +1,8 @@
 - `Title`: X/Twitter Data (Hurricane Ida)
 - `Abstract`: Tweet data during Hurricane Ida (2021)
-- `Spatial Coverage`:  United States? Specify the geographic extent of your study. This may be a place name and link to a feature in a gazetteer like GeoNames or OpenStreetMap, or a well known text (WKT) representation of a bounding box.
+- `Spatial Coverage`: continental United States
 - `Spatial Resolution`: GPS coordinates? Specify the spatial resolution as a scale factor, description of the level of detail of each unit of observation (including administrative level of administrative areas), and/or or distance of a raster GRID size
-- `Spatial Reference System`: GPS? Specify the geographic or projected coordinate system for the study
+- `Spatial Reference System`: NAD 1983
 - `Temporal Coverage`: 2021-08-29 to 2021-09-10
 - `Temporal Resolution`: Tweets are measured to the second (day hour:minute:second)
 - `Lineage`: However, due to new restraints from X/Twitter, we can no longer use the 
@@ -15,7 +15,7 @@
   - experimental manipulation
  
   - 
-- `Distribution`: Cannot be distributed publicly, contact researcher for access
+- `Distribution`: Cannot be distributed publicly, contact [Professor Joseph Holler](https://github.com/josephholler) for access
 - `Constraints`: Legal constraints for privacy, X/Twitter data cannot be distributed publicly for user privacy
 - `Data Quality`: n/a
 
@@ -32,10 +32,9 @@
 | Label | Alias | Definition | Type | Accuracy | Domain | Missing Data Value(s) | Missing Data Frequency |
 | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
 | user_id | unique user identifier | ... | ... | ... | ... | ... | ... |
-| status_id | ... | ... | ... | ... | ... | ... | ... |
+| status_id | unique status identifier | ... | ... | ... | ... | ... | ... |
 | created_at | time of tweet | ... | ... | ... | ... | ... | ... |
-| screen_name | X username | ... | ... | ... | ... | ... | ... |
 | text | text of tweet | ... | ... | ... | ... | ... | ... |
-| source | ... | ... | ... | ... | ... | ... | ... |
-| screen_name | ... | ... | ... | ... | ... | ... | ... |
-| screen_name | ... | ... | ... | ... | ... | ... | ... |
+| place_type | place type of tweet location | ... | ... | ... | ... | ... | ... |
+| coords_coords | ... | ... | ... | ... | ... | ... | ... |
+| bbox_coords | ... | ... | ... | ... | ... | ... | ... |
