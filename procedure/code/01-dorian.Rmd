@@ -61,6 +61,8 @@ package_check <- lapply(
 )
 ```
 
+The following code snippet will ask you if you want to update some packages. Enter '3' (None) when prompted.
+
 ```{r}
 
 # Install the 'remotes' package if you haven't already
@@ -580,7 +582,7 @@ counties <- counties %>%
   mutate(nov = replace_na(nov, 0))
 
 counties <- counties %>%
-  mutate(dorrate = dorian / POPESTIMATE * 10000) %>% # dorrate is tweets per 10,000
+  mutate(dorrate = dorian / POP * 10000) %>% # dorrate is tweets per 10,000
   mutate(ndti = (dorian - nov) / (dorian + nov)) %>% # normalized diff tweet index
   mutate(ndti = replace_na(ndti, 0)) # replace NULLs with 0's
 

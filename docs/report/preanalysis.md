@@ -9,46 +9,6 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Planned Revisions and Replication of the Dorian Twitter Study
-
-
-## Analysis
-
-We will conduct a replication study of the Dorian Twitter study using data from Hurricane Ida.
-One aspect of the 
-
-Adjust the computational environment
-
-bind RDS files to make replication easier
-
-Change normalization process
-
-To better the reproducibility study of Malcomb (2014), I will be expanding the written analysis and more directly addressing discrepancies between the original study and the reproduction. 
-
-My revision to the reproducibility study of Malcomb (2014) will prioritize adding the discussion, conclusion, and 'rationale for the updated report' sections. 
-Adding these three sections at the end of the study will improve the understanding of the reproduction by describing the changes made, the reasoning behind each choice, as well as the results of each change. 
-This will provide the most updated conclusions of the reproducibility study. 
-
-In addition to more comprehensive written analysis of the reproduction, I will also address the confusion caused by the inconsistent figure labeling of the original study. 
-In order to clearly represent the differences between the original study and the reproduction, I will add figures and comments to demonstrate the inconsistency with the figure labels.
-
-## Results
-
-The addition of a comprehensive discussion section will analyze each choice and deviation (along with the corresponding result) within the reproduction study and compare them to the original study.
-The discussion section will also help explain the reasoning behind each choice/deviation.
-The conclusion section will help to explain the significance of the reproduction while also addressing the study's effect on the broader scientific community. 
-The rationale section will reiterate how the changes made in this version of the study improved the first reproduction of Malcomb (2014).  
-
-Within the code, I will create figures based on the figure labels presented in the original study. 
-With annotations, I will then note the discrepancies between the original labels and the figures of the original and the reproductions. 
-The addition of figures and annotations will be accompanied by additions to the discussion section to strengthen clarity of the study. 
-
-## Discussion
-
-If the discussion, conclusion, and rationale sections showcase the changes, the results, and an understanding of the reproduction, then the study will have a more clear and organized analysis for future reproductions.
-If the code and the discussion addresses the inconsistent labeling of the original study's figures, then the study will have a more direct explanation for the discrepancies between the original study and the equations used for the reproduction.
-
-
 ### Authors
 
 - Andrey (Andy) Cao, acao@middlebury.edu, [@andreyjcao](https://github.com/andreyjcao), Middlebury College (Class of 2025)
@@ -60,15 +20,15 @@ If the code and the discussion addresses the inconsistent labeling of the origin
 This study is a replication of this [study](https://github.com/GIS4DEV/OR-Dorian) conducted by [Professor Joseph Holler](https://github.com/josephholler)
 
 
-### Study metadata
+### Study metadata (Hurricane Ida)
 
 - `Key words`: hurricane, ida, twitter, x
-- `Subject`: select from the [BePress Taxonomy](http://digitalcommons.bepress.com/cgi/viewcontent.cgi?article=1008&context=reference)
+- `Subject`: Social and Behavioral Sciences: Geography: Geographic Information Sciences
 - `Date created`: Replication started November 16, 2023
-- `Date modified`: December 15, 2023
+- `Date modified`: December 13, 2023
 - `Spatial Coverage`: continental United States
 - `Spatial Resolution`: GPS coordinates
-- `Spatial Reference System`: Specify the geographic or projected coordinate system for the study, e.g. EPSG:4326
+- `Spatial Reference System`: NAD 1983
 - `Temporal Coverage`: 2021-08-29 to 2021-9-10
 - `Temporal Resolution`: Tweets are measured to the second (formatted as 'day hour:minute:second')
 - `Funding Name`: n/a
@@ -76,11 +36,11 @@ This study is a replication of this [study](https://github.com/GIS4DEV/OR-Dorian
 - `Award info URI`: n/a
 - `Award number`: n/a
 
-#### Original study spatio-temporal metadata (Hurricane Dorian)
+#### Original study spatio-temporal metadata (Hurricane Dorian data)
 
 - `Spatial Coverage`: continental United States
 - `Spatial Resolution`: GPS coordinates
-- `Spatial Reference System`: spatial reference system of original study
+- `Spatial Reference System`: NAD 1983
 - `Temporal Coverage`: 2019-09-05 to 2019-09-10
 - `Temporal Resolution`: Tweets are measured to the second (formatted as 'day hour:minute:second')
 
@@ -110,76 +70,34 @@ Secondary data sources for the study are to include ... .
 
 Each of the next subsections describes one data source.
 
-#### Primary data source1 name
+#### Primary data (tevent_raw.RDS, tevent_raw2.RDS, tevent_raw3.RDS, tevent_raw4.RDS)
 
 **Standard Metadata**
 
-- `Abstract`: Brief description of the data source
-- `Spatial Coverage`: Specify the geographic extent of your study. This may be a place name and link to a feature in a gazetteer like GeoNames or OpenStreetMap, or a well known text (WKT) representation of a bounding box.
-- `Spatial Resolution`: Specify the spatial resolution as a scale factor, description of the level of detail of each unit of observation (including administrative level of administrative areas), and/or or distance of a raster GRID size
-- `Spatial Reference System`: Specify the geographic or projected coordinate system for the study
-- `Temporal Coverage`: Specify the temporal extent of your study---i.e. the range of time represented by the data observations.
-- `Temporal Resolution`: Specify the temporal resolution of your study---i.e. the duration of time for which each observation represents or the revisit period for repeated observations
+- `Abstract`: Tweet data during Hurricane Ida (2021)
+- `Spatial Coverage`: continental United States
+- `Spatial Resolution`: GPS coordinates
+- `Spatial Reference System`: NAD 1983
+- `Temporal Coverage`: 2021-08-29 to 2021-09-10
+- `Temporal Resolution`: Tweets are measured to the second (day hour:minute:second)
+
 - `Lineage`: Describe and/or cite data sources and/or methodological steps planned to create this data source.
   - sampling scheme, including spatial sampling
   - target sample size and method for determining sample size
   - stopping criteria for data collection and sampling (e.g. sample size, time elapsed)
   - de-identification / anonymization
   - experimental manipulation
-- `Distribution`: Describe who will make the data available and how?
-- `Constraints`: Legal constraints for *access* or *use* to protect *privacy* or *intellectual property rights*
-- `Data Quality`: State any planned quality assessment
-- `Variables`: For each variable, enter the following information. If you have two or more variables per data source, you may want to present this information in table form (shown below)
-  - `Label`: variable name as used in the data or code
-  - `Alias`: intuitive natural language name
-  - `Definition`: Short description or definition of the variable. Include measurement units in description.
-  - `Type`: data type, e.g. character string, integer, real
-  - `Accuracy`: e.g. uncertainty of measurements
-  - `Domain`: Expected range of Maximum and Minimum of numerical data, or codes or categories of nominal data, or reference to a standard codebook
-  - `Missing Data Value(s)`: Values used to represent missing data and frequency of missing data observations
-  - `Missing Data Frequency`: Frequency of missing data observations: not yet known for data to be collected
+  
+- `Distribution`: Cannot be distributed publicly, contact [Professor Joseph Holler](https://github.com/josephholler) for access
+- `Constraints`: Legal constraints for privacy, X/Twitter data cannot be distributed publicly for user privacy
+- `Data Quality`: n/a
+- `Variables`:
 
 | Label | Alias | Definition | Type | Accuracy | Domain | Missing Data Value(s) | Missing Data Frequency |
 | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
 | variable1 | ... | ... | ... | ... | ... | ... | ... |
 | variable2 | ... | ... | ... | ... | ... | ... | ... |
 
-#### Primary data source2 name
-
-... same form as above...
-
-#### Secondary data source1 name
-
-**Standard Metadata**
-
-- `Abstract`: Brief description of the data source
-- `Spatial Coverage`: Specify the geographic extent of your study. This may be a place name and link to a feature in a gazetteer like GeoNames or OpenStreetMap, or a well known text (WKT) representation of a bounding box.
-- `Spatial Resolution`: Specify the spatial resolution as a scale factor, description of the level of detail of each unit of observation (including administrative level of administrative areas), and/or or distance of a raster GRID size
-- `Spatial Reference System`: Specify the geographic or projected coordinate system for the study
-- `Temporal Coverage`: Specify the temporal extent of your study---i.e. the range of time represented by the data observations.
-- `Temporal Resolution`: Specify the temporal resolution of your study---i.e. the duration of time for which each observation represents or the revisit period for repeated observations
-- `Lineage`: Describe and/or cite data sources and/or methodological steps used to create this data source
-- `Distribution`: Describe how the data is distributed, including any persistent identifier (e.g. DOI) or URL for data access
-- `Constraints`: Legal constraints for *access* or *use* to protect *privacy* or *intellectual property rights*
-- `Data Quality`: State result of quality assessment or state "Quality unknown"
-- `Variables`: For each variable, enter the following information. If you have two or more variables per data source, you may want to present this information in table form (shown below)
-  - `Label`: variable name as used in the data or code
-  - `Alias`: intuitive natural language name
-  - `Definition`: Short description or definition of the variable. Include measurement units in description.
-  - `Type`: data type, e.g. character string, integer, real
-  - `Accuracy`: e.g. uncertainty of measurements
-  - `Domain`: Range (Maximum and Minimum) of numerical data, or codes or categories of nominal data, or reference to a standard codebook
-  - `Missing Data Value(s)`: Values used to represent missing data and frequency of missing data observations
-  - `Missing Data Frequency`: Frequency of missing data observations
-
-| Label | Alias | Definition | Type | Accuracy | Domain | Missing Data Value(s) | Missing Data Frequency |
-| :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
-| variable1 | ... | ... | ... | ... | ... | ... | ... |
-| variable2 | ... | ... | ... | ... | ... | ... | ... |
-
-#### Secondary data source2 name
-
-... same form as above...
 
 ### Prior observations  
 
@@ -248,26 +166,55 @@ Describe the methods of analysis that will directly test the hypotheses or provi
 This section should explicitly define any spatial / statistical *models* and their *parameters*, including *grouping* criteria, *weighting* criteria, and *significance thresholds*.
 Also explain any follow-up analyses or validations.
 
+We will conduct a replication study of the Dorian Twitter study using data from Hurricane Ida.
+One aspect of the 
+
+Adjust the computational environment
+
+bind RDS files to make replication easier
+
+Change normalization process (census data instead of twitter data)
+
+To better the reproducibility study of Malcomb (2014), I will be expanding the written analysis and more directly addressing discrepancies between the original study and the reproduction. 
+
+My revision to the reproducibility study of Malcomb (2014) will prioritize adding the discussion, conclusion, and 'rationale for the updated report' sections. 
+Adding these three sections at the end of the study will improve the understanding of the reproduction by describing the changes made, the reasoning behind each choice, as well as the results of each change. 
+This will provide the most updated conclusions of the reproducibility study. 
+
+In addition to more comprehensive written analysis of the reproduction, I will also address the confusion caused by the inconsistent figure labeling of the original study. 
+In order to clearly represent the differences between the original study and the reproduction, I will add figures and comments to demonstrate the inconsistency with the figure labels.
+
 ## Results
 
 The resulting replications should perform the 
+
+The addition of a comprehensive discussion section will analyze each choice and deviation (along with the corresponding result) within the reproduction study and compare them to the original study.
+The discussion section will also help explain the reasoning behind each choice/deviation.
+The conclusion section will help to explain the significance of the reproduction while also addressing the study's effect on the broader scientific community. 
+The rationale section will reiterate how the changes made in this version of the study improved the first reproduction of Malcomb (2014).  
+
+Within the code, I will create figures based on the figure labels presented in the original study. 
+With annotations, I will then note the discrepancies between the original labels and the figures of the original and the reproductions. 
+The addition of figures and annotations will be accompanied by additions to the discussion section to strengthen clarity of the study.
 
 ## Discussion
 
 Describe how the results are to be interpreted *vis a vis* each hypothesis or research question.
 
-## Integrity Statement
+If the discussion, conclusion, and rationale sections showcase the changes, the results, and an understanding of the reproduction, then the study will have a more clear and organized analysis for future reproductions.
+If the code and the discussion addresses the inconsistent labeling of the original study's figures, then the study will have a more direct explanation for the discrepancies between the original study and the equations used for the reproduction.
 
-Include an integrity statement - The authors of this preregistration state that they completed this preregistration to the best of their knowledge and that no other preregistration exists pertaining to the same hypotheses and research.
+
+## Integrity Statement
+The authors of this preregistration state that they completed this preregistration to the best of their knowledge and that no other preregistration exists pertaining to the same hypotheses and research.
+
 If a prior registration *does* exist, explain the rationale for revising the registration here.
 
 ## Acknowledgements
 
-- `Funding Name`: name of funding for the project
-- `Funding Title`: title of project grant
-- `Award info URI`: web address for award information
-- `Award number`: award number
-
 This report is based upon the template for Reproducible and Replicable Research in Human-Environment and Geographical Sciences, DOI:[10.17605/OSF.IO/W29MQ](https://doi.org/10.17605/OSF.IO/W29MQ)
 
 ## References
+
+This study is a replication of this [study](https://github.com/GIS4DEV/OR-Dorian) conducted by [Professor Joseph Holler](https://github.com/josephholler)
+

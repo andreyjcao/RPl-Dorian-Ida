@@ -6,7 +6,7 @@ output: html_document
 ---
 
 # Hurricane Ida on X/Twitter
-Author: Joseph Holler, Andrey Cao
+Author: Joseph Holler, Andrey Cao 
 Created: Fall 2019
 Updated: Fall 2023
 
@@ -16,15 +16,48 @@ This analysis was developed with assistance from:
 tutorial on EarthLab at: 
 https://www.earthdatascience.org/courses/earth-analytics/get-data-using-apis/use-twitter-api-r/
 - Michael Minn's *Basic Spatial Point Pattern Analysis in R* tutorial at: http://michaelminn.net/tutorials/r-point-analysis/
+- Help from fellow student Elise Chan
 
-## Abstract
+# Abstract
 
-## Set up environment
+This is ...
+
+# Study metadata
+
+- `Key words`: Comma-separated list of keywords (tags) for searchability. Geographers often use one or two keywords each for: theory, geographic context, and methods.
+- `Subject`: select from the [BePress Taxonomy](http://digitalcommons.bepress.com/cgi/viewcontent.cgi?article=1008&context=reference)
+- `Date created`: date when project was started
+- `Date modified`: date of most recent revision
+- `Spatial Coverage`: Specify the geographic extent of your study. This may be a place name and link to a feature in a gazetteer like GeoNames or OpenStreetMap, or a well known text (WKT) representation of a bounding box.
+- `Spatial Resolution`: Specify the spatial resolution as a scale factor, description of the level of detail of each unit of observation (including administrative level of administrative areas), and/or or distance of a raster GRID size
+- `Spatial Reference System`: Specify the geographic or projected coordinate system for the study, e.g. EPSG:4326
+- `Temporal Coverage`: Specify the temporal extent of your study---i.e. the range of time represented by the data observations.
+- `Temporal Resolution`: Specify the temporal resolution of your study---i.e. the duration of time for which each observation represents or the revisit period for repeated observations
+- `Funding Name`: name of funding for the project
+- `Funding Title`: title of project grant
+- `Award info URI`: web address for award information
+- `Award number`: award number
+
+## Original study spatio-temporal metadata
+
+- `Spatial Coverage`: extent of original study
+- `Spatial Resolution`: resolution of original study
+- `Spatial Reference System`: spatial reference system of original study
+- `Temporal Coverage`: temporal extent of original study
+- `Temporal Resolution`: temporal resolution of original study
+
+#Study design
+
+This is a replication study of 
+
+# Materials and procedure
+
+## Computational environment (planned deviations)
 
 Load the R project saved in the root directory of this repository, so that the
 working directory is the root directory of the repository.
 
-```{r setup, message = FALSE, warning = FALSE}
+```{r chunk setup, include = FALSE, message = FALSE, warning = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
 # install r version from 9-10-2021
@@ -48,10 +81,10 @@ packages <- c(
   "tidytext", "tm", "igraph", "ggraph",
   "tidycensus", "sf", "spdep"
 )
-
-
-# additional packages: test which are still needed:
-# "maps", "tm", "RColorBrewer", "rccmisc",
+# you may need to install a correct version of R
+# you may need to respond OK in the console to permit groundhog to install packages
+# you may need to restart R and rerun this code to load installed packages
+# In RStudio, restart r with Session -> Restart Session
 
 # load and install required packages
 package_check <- lapply(
@@ -64,6 +97,9 @@ package_check <- lapply(
   }
 )
 ```
+
+The following code snippet may ask you if you want to update some packages. 
+Enter '3' (None) when prompted.
 
 ```{r upload crucial packages}
 
@@ -88,7 +124,53 @@ writeLines(
   )
 ```
 
-## Set up Twitter Application
+## Data and variables
+
+Describe the **data sources** and **variables** to be used.
+Data sources may include plans for observing and recording **primary data** or descriptions of **secondary data**.
+For secondary data sources with numerous variables, the analysis plan authors may focus on documenting only the variables intended for use in the study.
+
+Primary data sources for the study are to include ... .
+Secondary data sources for the study are to include ... .
+
+Each of the next subsections describes one data source.
+
+### Primary data source1 name
+
+- `Title`: Title of data source
+- `Abstract`: Brief description of the data source
+- `Spatial Coverage`: Specify the geographic extent of your study. This may be a place name and link to a feature in a gazetteer like GeoNames or OpenStreetMap, or a well known text (WKT) representation of a bounding box.
+- `Spatial Resolution`: Specify the spatial resolution as a scale factor, description of the level of detail of each unit of observation (including administrative level of administrative areas), and/or or distance of a raster GRID size
+- `Spatial Reference System`: Specify the geographic or projected coordinate system for the study
+- `Temporal Coverage`: Specify the temporal extent of your study---i.e. the range of time represented by the data observations.
+- `Temporal Resolution`: Specify the temporal resolution of your study---i.e. the duration of time for which each observation represents or the revisit period for repeated observations
+- `Lineage`: Describe and/or cite data sources and/or methodological steps planned to create this data source.
+  - sampling scheme, including spatial sampling
+  - target sample size and method for determining sample size
+  - stopping criteria for data collection and sampling (e.g. sample size, time elapsed)
+  - de-identification / anonymization
+  - experimental manipulation
+- `Distribution`: Describe who will make the data available and how?
+- `Constraints`: Legal constraints for *access* or *use* to protect *privacy* or *intellectual property rights*
+- `Data Quality`: State any planned quality assessment
+- `Variables`: For each variable, enter the following information. If you have two or more variables per data source, you may want to present this information in table form (shown below)
+  - `Label`: variable name as used in the data or code
+  - `Alias`: intuitive natural language name
+  - `Definition`: Short description or definition of the variable. Include measurement units in description.
+  - `Type`: data type, e.g. character string, integer, real
+  - `Accuracy`: e.g. uncertainty of measurements
+  - `Domain`: Expected range of Maximum and Minimum of numerical data, or codes or categories of nominal data, or reference to a standard codebook
+  - `Missing Data Value(s)`: Values used to represent missing data and frequency of missing data observations
+  - `Missing Data Frequency`: Frequency of missing data observations: not yet known for data to be collected
+
+| Label | Alias | Definition | Type | Accuracy | Domain | Missing Data Value(s) | Missing Data Frequency |
+| :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
+| variable1 | ... | ... | ... | ... | ... | ... | ... |
+| variable2 | ... | ... | ... | ... | ... | ... | ... |
+
+
+
+## Set up Twitter Application 
 
 You will need Twitter Developer API access to run this analysis:
 See https://cran.r-project.org/web/packages/rtweet/vignettes/auth.html for
@@ -259,14 +341,78 @@ november_raw <- rehydratoR(twitter_token$app$key, twitter_token$app$secret,
 )
 ``` 
 
-## START HERE Load the original search results
+## Prior observations  
+
+Prior experience with the study area, prior data collection, or prior observation of the data can compromise the validity of a study, e.g. through p-hacking.
+Therefore, disclose any prior experience or observations at the time of study pre-registration here, with example text below:
+
+At the time of this study pre-registration, the authors had _____ prior knowledge of the geography of the study region with regards to the ____ phenomena to be studied.
+This study is related to ____ prior studies by the authors
+
+For each primary data source, declare the extent to which authors had already engaged with the data:
+
+- [ ] no data collection has started
+- [ ] pilot test data has been collected
+- [ ] data collection is in progress and data has not been observed
+- [ ] data collection is in progress and __% of data has been observed
+- [ ] data collection is complete and data has been observed. Explain how authors have already manipulated / explored the data.
+
+For each secondary source, declare the extent to which authors had already engaged with the data:
+
+- [ ] data is not available yet
+- [ ] data is available, but only metadata has been observed
+- [ ] metadata and descriptive statistics have been observed
+- [ ] metadata and a pilot test subset or sample of the full dataset have been observed
+- [ ] the full dataset has been observed. Explain how authors have already manipulated / explored the data.
+
+If pilot test data has been collected or acquired, describe how the researchers observed and analyzed the pilot test, and the extent to which the pilot test influenced the research design.
+
+## Bias and threats to validity
+
+Given the research design and primary data to be collected and/or secondary data to be used, discuss common threats to validity and the approach to mitigating those threats, with an emphasis on geographic threats to validity.
+
+These include:
+  - uneven primary data collection due to geographic inaccessibility or other constraints
+  - multiple hypothesis testing
+  - edge or boundary effects
+  - the modifiable areal unit problem
+  - nonstationarity
+  - spatial dependence or autocorrelation
+  - temporal dependence or autocorrelation
+  - spatial scale dependency
+  - spatial anisotropies
+  - confusion of spatial and a-spatial causation
+  - ecological fallacy
+  - uncertainty e.g. from spatial disaggregation, anonymization, differential privacy
+
+
+## Data transformations
+
+Describe all data transformations planned to prepare data sources for analysis.
+This section should explain with the fullest detail possible how to transform data from the **raw** state at the time of acquisition or observation, to the pre-processed **derived** state ready for the main analysis.
+Including steps to check and mitigate sources of **bias** and **threats to validity**.
+The method may anticipate **contingencies**, e.g. tests for normality and alternative decisions to make based on the results of the test.
+More specifically, all the **geographic** and **variable** transformations required to prepare input data as described in the data and variables section above to match the study's spatio-temporal characteristics as described in the study metadata and study design sections.
+Visual workflow diagrams may help communicate the methodology in this section.
+
+Examples of **geographic** transformations include coordinate system transformations, aggregation, disaggregation, spatial interpolation, distance calculations, zonal statistics, etc.
+
+Examples of **variable** transformations include standardization, normalization, constructed variables, imputation, classification, etc.
+
+Be sure to include any steps planned to **exclude** observations with *missing* or *outlier* data, to **group** observations by *attribute* or *geographic* criteria, or to **impute** missing data or apply spatial or temporal **interpolation**.
+
+
+
+### START HERE Load the original search results (planned deviation)
 
 Students in the GEOG 323 Open Source GIScience course may download the original
 search results from the private course data repository: 
-https://github.com/GIS4DEV/geog323data/raw/main/dorian/dorian_raw.RDS
-https://github.com/GIS4DEV/geog323data/raw/main/dorian/november.RDS
+https://github.com/GIS4DEV/geog323data/raw/main/ida/tevent_raw.RDS
+https://github.com/GIS4DEV/geog323data/raw/main/ida/tevent_raw2.RDS
+https://github.com/GIS4DEV/geog323data/raw/main/ida/tevent_raw3.RDS
+https://github.com/GIS4DEV/geog323data/raw/main/ida/tevent_raw4.RDS
 
-Save the two `.RDS` files to the `data/raw/private` folder and then load the
+Save the four `.RDS` files to the `data/raw/private` folder and then load the
 ??data with the code block below.
 
 ```{r load-original}
@@ -276,13 +422,16 @@ tevent_raw3 <- readRDS(here("data", "raw", "private", "tevent_raw3.RDS"))
 tevent_raw4 <- readRDS(here("data", "raw", "private", "tevent_raw4.RDS"))
 ```
 
+You must bind the four files using the rbind function to continue. 
+To avoid duplicates, you can use the distinct function.
+
 ```{r bind-original}
 ida_raw_all <- rbind(tevent_raw1, tevent_raw2, tevent_raw3, tevent_raw4) #includes duplicates
 ida_raw <- ida_raw_all %>% distinct(status_id, .keep_all = TRUE) #excludes duplicates
 ```
 
 
-## Process geographic data in tweets 
+### Process geographic data in tweets 
 
 reference for lat_lng function: https://rtweet.info/reference/lat_lng.html
 adds a lat and long field to the data frame, picked out of the fields
@@ -298,7 +447,7 @@ in your search parameters and are including locations based on user profiles
 count(ida_raw, place_type)
 ```
 
-### Convert geographic information into lat/long coordinates
+#### Convert geographic information into lat/long coordinates
 
 If you have loaded filtered status ids, or you have already run this code, you
 will not notice a difference in `place_type` or `n` because the data has already
@@ -351,18 +500,7 @@ Load processed twitter data
 ida <- readRDS(here("data", "derived", "private", "ida.RDS"))
 ```
 
-# Temporal Analysis
-
-Create a temporal data frame and graph it
-
-```{r temporal}
-ida_tweets_by_hour <- ts_data(ida, by = "hours")
-ts_plot(ida, by = "hours")
-```
-
-# Text Analysis
-
-## Clean the text data
+### Clean the text data
 
 Parse the tweet data for plain language, and parse tweet text into words.
 Remove stop words and our search terms.
@@ -400,7 +538,20 @@ word_count <- append(
 print(word_count)
 ```
 
-## Graph frequencies of words
+# Analysis
+
+## Temporal Analysis
+
+Create a temporal data frame and graph it
+
+```{r temporal}
+ida_tweets_by_hour <- ts_data(ida, by = "hours")
+ts_plot(ida, by = "hours")
+```
+
+## Text Analysis
+
+### Graph frequencies of words
 
 ```{r word-frequency}
 ida_words %>%
@@ -418,7 +569,7 @@ ida_words %>%
   )
 ```
 
-## Analyze and graph word association
+### Analyze and graph word association
 
 ```{r word-association}
 # separate words and count frequency of word pair occurrence in tweets
@@ -451,7 +602,7 @@ ida_word_pairs %>%
   )
 ```
 
-## Spatial Analysis
+## Spatial Analysis (planned deviation)
 
 First, you will need a Census API. You can sign up for one here: https://api.census.gov/data/key_signup.html
 
@@ -465,16 +616,17 @@ census_api_key(dlgInput(
 overwrite = TRUE
 )
 
-counties <- get_estimates(
+counties <- get_acs(
   "county",
-  product = "population",
+  variables = "B01003_001",
+  year = 2020,
   output = "wide",
   geometry = TRUE,
   keep_geo_vars = TRUE
 )
 ```
 
-## Select and save counties of interest
+### Select and save counties of interest and find density (planned deviation)
 
 select only the states you want, with FIPS state codes
 look up fips codes here: 
@@ -490,14 +642,16 @@ counties <- filter(
     "34", "33", "29", "28", "25", "24", "23", "22", "21", "18", "17", "13",
     "12", "11", "10", "09"
   )
-)
-# alternatively, one could select by location using original search criteria...
+) %>% 
+  rename(POP = "B01003_001E", MOE = "B01003_001M") %>% 
+  mutate(DENSITY = POP/ALAND) #find density
+
 
 saveRDS(counties, here("data", "derived", "public", "counties.RDS"))
 ```
 
 
-### Load counties
+#### Load counties
 
 Optionally, load counties from the `counties.RDS` file saved with the repository
 
@@ -522,7 +676,7 @@ ggplot() +
     data = ida, aes(x = lng, y = lat),
     colour = "purple", alpha = 0.1, size = 1
   ) +
-  labs(title = "Tweet Locations During Hurricane Dorian") +
+  labs(title = "Tweet Locations During Hurricane Ida") +
   theme(
     plot.title = element_text(hjust = 0.5),
     axis.title.x = element_blank(),
@@ -550,9 +704,15 @@ ida_by_county <- ida_sf %>%
 
 counties <- counties %>%
   left_join(ida_by_county, by = "GEOID") %>% # join count of tweets to counties
-  mutate(ida = replace_na(ida, 0)) # replace nulls with 0's
+  mutate(ida = replace_na(ida, 0), # replace nulls with 0's
+         popestimate = POP/10000, #using census population to mimic tweets per 10,000
+         idarate = ida/popestimate) 
 
-rm(ida_by_county)
+#normalization
+
+counties <- counties %>%
+  mutate(ndti = (ida - popestimate)/(ida + popestimate)) %>% 
+  mutate(ndti = replace_na(ndti, 0)) # replace NULLs with 0's
 
 # save counties geographic data with derived tweet rates
 saveRDS(counties, here("data", "derived", "public", "counties_tweet_counts.RDS"))
@@ -567,7 +727,7 @@ counties <- readRDS(here("data", "derived", "public", "counties_tweet_counts.RDS
 ```{r map ndti}
 ggplot() +
   geom_sf(data = counties, 
-    aes(fill = cut_interval(dorrate, 5)), color = "grey", lwd=0.01) +
+    aes(fill = cut_interval(idarate, 5)), color = "grey", lwd=0.01) +
   scale_fill_brewer(palette = "GnBu") +
   guides(fill = guide_legend(title = "Normalized Difference Tweet Index")) +
   labs(title = "Hurricane Ida Twitter Activity") +
@@ -616,7 +776,7 @@ dwm <- nb2listw(thresdist, zero.policy = T)
 
 ######## Local G* Hotspot Analysis ########
 # Get Ord G* statistic for hot and cold spots
-counties$locG <- as.vector(localG(counties$dorrate,
+counties$locG <- as.vector(localG(counties$idarate,
   listw = dwm,
   zero.policy = TRUE
 ))
@@ -677,9 +837,24 @@ ggplot() +
   )
 ```
 
+# Results
 
+Describe how results are to be presented.
 
+# Discussion
 
+Describe how the results are to be interpreted *vis a vis* each hypothesis or research question.
 
+# Integrity Statement
 
+Include an integrity statement - The authors of this preregistration state that they completed this preregistration to the best of their knowledge and that no other preregistration exists pertaining to the same hypotheses and research.
+If a prior registration *does* exist, explain the rationale for revising the registration here.
+
+# Acknowledgements
+
+This report is based upon the template for Reproducible and Replicable Research in Human-Environment and Geographical Sciences, DOI:[10.17605/OSF.IO/W29MQ](https://doi.org/10.17605/OSF.IO/W29MQ)
+
+# References
+
+This study is a replication of this [study](https://github.com/GIS4DEV/OR-Dorian) conducted by [Professor Joseph Holler](https://github.com/josephholler)
 
