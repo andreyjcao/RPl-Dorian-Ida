@@ -1,6 +1,6 @@
 - `Title`: X/Twitter Data (Hurricane Ida)
 - `Abstract`: Tweet data during Hurricane Ida (2021)
-- `Spatial Coverage`:  United States? Specify the geographic extent of your study. This may be a place name and link to a feature in a gazetteer like GeoNames or OpenStreetMap, or a well known text (WKT) representation of a bounding box.
+- `Spatial Coverage`: continental United States
 - `Spatial Resolution`: GPS coordinates? Specify the spatial resolution as a scale factor, description of the level of detail of each unit of observation (including administrative level of administrative areas), and/or or distance of a raster GRID size
 - `Spatial Reference System`: NAD 1983
 - `Temporal Coverage`: 2021-08-29 to 2021-09-10
