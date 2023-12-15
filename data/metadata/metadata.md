@@ -15,7 +15,7 @@
   - experimental manipulation
  
   - 
-- `Distribution`: Cannot be distributed publicly, contact researcher for access
+- `Distribution`: Cannot be distributed publicly, contact [Professor Joseph Holler](https://github.com/josephholler) for access
 - `Constraints`: Legal constraints for privacy, X/Twitter data cannot be distributed publicly for user privacy
 - `Data Quality`: n/a
 
