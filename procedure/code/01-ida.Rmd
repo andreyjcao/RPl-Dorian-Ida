@@ -619,7 +619,7 @@ overwrite = TRUE
 counties <- get_acs(
   "county",
   variables = "B01003_001",
-  year = 2020,
+  year = 2021,
   output = "wide",
   geometry = TRUE,
   keep_geo_vars = TRUE
@@ -839,11 +839,11 @@ ggplot() +
 
 # Results
 
-Describe how results are to be presented.
+The 
 
 # Discussion
 
-Describe how the results are to be interpreted *vis a vis* each hypothesis or research question.
+The
 
 # Integrity Statement
 

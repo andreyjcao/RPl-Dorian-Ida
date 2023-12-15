@@ -9,11 +9,11 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-### Authors
+## Authors
 
 - Andrey (Andy) Cao, acao@middlebury.edu, [@andreyjcao](https://github.com/andreyjcao), Middlebury College (Class of 2025)
 
-### Abstract
+## Abstract
 
 *Write a brief abstract about your research project.*
 
@@ -44,13 +44,16 @@ This study is a replication of this [study](https://github.com/GIS4DEV/OR-Dorian
 - `Temporal Coverage`: 2019-09-05 to 2019-09-10
 - `Temporal Resolution`: Tweets are measured to the second (formatted as 'day hour:minute:second')
 
+
 ## Study design
 
-Describe how the study relates to prior literature, **replication study**
+This is a replication of this [study of Hurricane Dorian](https://github.com/GIS4DEV/OR-Dorian) conducted by [Professor Joseph Holler](https://github.com/josephholler)
+
 
 Also describe the original study archetype, e.g. is it **observational**, **experimental**, **quasi-experimental**, or **exploratory**?
 
 Enumerate specific **hypotheses** to be tested or **research questions** to be investigated here, and specify the type of method, statistical test or model to be used on the hypothesis or question.
+
 
 ## Materials and procedure
 
@@ -67,8 +70,6 @@ For secondary data sources with numerous variables, the analysis plan authors ma
 
 Primary data sources for the study are to include ... .
 Secondary data sources for the study are to include ... .
-
-Each of the next subsections describes one data source.
 
 #### Primary data (tevent_raw.RDS, tevent_raw2.RDS, tevent_raw3.RDS, tevent_raw4.RDS)
 
@@ -160,7 +161,7 @@ Examples of **variable** transformations include standardization, normalization,
 
 Be sure to include any steps planned to **exclude** observations with *missing* or *outlier* data, to **group** observations by *attribute* or *geographic* criteria, or to **impute** missing data or apply spatial or temporal **interpolation**.
 
-### Analysis
+## Analysis
 
 Describe the methods of analysis that will directly test the hypotheses or provide results to answer the research questions.
 This section should explicitly define any spatial / statistical *models* and their *parameters*, including *grouping* criteria, *weighting* criteria, and *significance thresholds*.
@@ -204,11 +205,8 @@ Describe how the results are to be interpreted *vis a vis* each hypothesis or re
 If the discussion, conclusion, and rationale sections showcase the changes, the results, and an understanding of the reproduction, then the study will have a more clear and organized analysis for future reproductions.
 If the code and the discussion addresses the inconsistent labeling of the original study's figures, then the study will have a more direct explanation for the discrepancies between the original study and the equations used for the reproduction.
 
-
 ## Integrity Statement
 The authors of this preregistration state that they completed this preregistration to the best of their knowledge and that no other preregistration exists pertaining to the same hypotheses and research.
-
-If a prior registration *does* exist, explain the rationale for revising the registration here.
 
 ## Acknowledgements
 
