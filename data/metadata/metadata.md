@@ -31,10 +31,10 @@
 
 | Label | Alias | Definition | Type | Accuracy | Domain | Missing Data Value(s) | Missing Data Frequency |
 | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
-| user_id | unique user identifier | ... | ... | ... | ... | ... | ... |
-| status_id | unique status identifier | ... | ... | ... | ... | ... | ... |
-| created_at | time of tweet | ... | ... | ... | ... | ... | ... |
-| text | text of tweet | ... | ... | ... | ... | ... | ... |
-| place_type | place type of tweet location | ... | ... | ... | ... | ... | ... |
-| coords_coords | ... | ... | ... | ... | ... | ... | ... |
-| bbox_coords | ... | ... | ... | ... | ... | ... | ... |
+| status_id | unique status identifier | ID number for each status | character | ... | 	
+1431923022718459904 to 1436353772679204866 | ... | no missing data |
+| created_at | time of tweet | post time measured as (day hour:minute:second) | character | to the second | (2021-08-29 10:13:47) to (2021-09-10 15:40:00) | ... | no missing data |
+| text | text of tweet | any characters contained within tweet | character | ... | ... | ... | no missing data |
+| place_type | place type of tweet location | X/Twitter geographic place type | character | based on X/Twitter categorization | city, neighborhood, poi, or NA | NA | about 94.79% of place_type missing |
+| coords_coords | coordinates | ... | ... | ... | ... | ... | ... |
+| bbox_coords | bound box coordinates | ... | ... | ... | ... | ... | ... |
