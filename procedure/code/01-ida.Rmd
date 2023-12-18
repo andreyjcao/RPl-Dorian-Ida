@@ -54,8 +54,13 @@ Additionally, the new lack of free access to X/Twitter data led us to alter the 
 
 #Study design
 
-This is a replication of this [study of Hurricane Dorian](https://github.com/GIS4DEV/OR-Dorian) conducted by [Professor Joseph Holler](https://github.com/josephholler). 
+This is a replication of this [study of Hurricane Dorian](https://github.com/GIS4DEV/OR-Dorian) conducted by [Professor Joseph Holler](https://github.com/josephholler).
+The original study archetype was observational, as it was comparing X/Twitter data for the trending news surrounding #Sharpiegate and Hurricane Dorian.
 
+Holler (2021) focused on the research question surrounding whether the trending news and social media content (#Sharpiegate) regarding a false narrative of risk would cluster along the real hurricane (Dorian) track. 
+Using a temporal analysis graph, a content analysis graph, a map of X/Twitter activity, and a hotspot map, Holler (2021) visualizes patterns of the observed tweets. 
+
+This replication will use X/Twitter data surrounding Hurricane Ida. We attempt to successfully replicate the figures presented in the original Holler (2021) study. 
 
 # Materials and procedure
 
@@ -133,49 +138,37 @@ writeLines(
 
 ## Data and variables
 
-Describe the **data sources** and **variables** to be used.
-Data sources may include plans for observing and recording **primary data** or descriptions of **secondary data**.
-For secondary data sources with numerous variables, the analysis plan authors may focus on documenting only the variables intended for use in the study.
+Since the X/Twitter API is no longer accessible for free, we used older tweet
+files that must remain private due to Twitter privacy regulations.
+Contact [Professor Joseph Holler](https://github.com/josephholler) if you are
+interested in getting access to these files.
 
-Primary data sources for the study are to include ... .
-Secondary data sources for the study are to include ... .
+### Primary data (tevent_raw.RDS, tevent_raw2.RDS, tevent_raw3.RDS, tevent_raw4.RDS)
 
-Each of the next subsections describes one data source.
-
-### Primary data source1 name
-
-- `Title`: Title of data source
-- `Abstract`: Brief description of the data source
-- `Spatial Coverage`: Specify the geographic extent of your study. This may be a place name and link to a feature in a gazetteer like GeoNames or OpenStreetMap, or a well known text (WKT) representation of a bounding box.
-- `Spatial Resolution`: Specify the spatial resolution as a scale factor, description of the level of detail of each unit of observation (including administrative level of administrative areas), and/or or distance of a raster GRID size
-- `Spatial Reference System`: Specify the geographic or projected coordinate system for the study
-- `Temporal Coverage`: Specify the temporal extent of your study---i.e. the range of time represented by the data observations.
-- `Temporal Resolution`: Specify the temporal resolution of your study---i.e. the duration of time for which each observation represents or the revisit period for repeated observations
-- `Lineage`: Describe and/or cite data sources and/or methodological steps planned to create this data source.
-  - sampling scheme, including spatial sampling
-  - target sample size and method for determining sample size
-  - stopping criteria for data collection and sampling (e.g. sample size, time elapsed)
-  - de-identification / anonymization
-  - experimental manipulation
-- `Distribution`: Describe who will make the data available and how?
-- `Constraints`: Legal constraints for *access* or *use* to protect *privacy* or *intellectual property rights*
-- `Data Quality`: State any planned quality assessment
-- `Variables`: For each variable, enter the following information. If you have two or more variables per data source, you may want to present this information in table form (shown below)
-  - `Label`: variable name as used in the data or code
-  - `Alias`: intuitive natural language name
-  - `Definition`: Short description or definition of the variable. Include measurement units in description.
-  - `Type`: data type, e.g. character string, integer, real
-  - `Accuracy`: e.g. uncertainty of measurements
-  - `Domain`: Expected range of Maximum and Minimum of numerical data, or codes or categories of nominal data, or reference to a standard codebook
-  - `Missing Data Value(s)`: Values used to represent missing data and frequency of missing data observations
-  - `Missing Data Frequency`: Frequency of missing data observations: not yet known for data to be collected
+- `Title`: X/Twitter Data (Hurricane Ida)
+- `Abstract`: Tweet data during Hurricane Ida (2021)
+- `Spatial Coverage`: continental United States
+- `Spatial Resolution`: GPS coordinates
+- `Spatial Reference System`: NAD 1983
+- `Temporal Coverage`: 2021-08-29 to 2021-09-10
+- `Temporal Resolution`: Tweets are measured to the second (day hour:minute:second)
+- `Lineage`: The data files were made using the X/Twitter API. Though the code to retrieve the data is within the study, new regulations of the API prevent that code from working. 
+- `Distribution`: Cannot be distributed publicly, contact [Professor Joseph Holler](https://github.com/josephholler) for access
+- `Constraints`: Legal constraints for privacy, X/Twitter data cannot be distributed publicly for user privacy
+- `Data Quality`: n/a
+- `Variables`: Here are the variables used within the study (out of a total of 90 variables)
 
 | Label | Alias | Definition | Type | Accuracy | Domain | Missing Data Value(s) | Missing Data Frequency |
 | :--: | :--: | :--: | :--: | :--: | :--: | :--: | :--: |
-| variable1 | ... | ... | ... | ... | ... | ... | ... |
-| variable2 | ... | ... | ... | ... | ... | ... | ... |
+| status_id | unique status identifier | ID number for each status | character | ... | 1431923022718459904 to 1436353772679204866 | ... | no missing data |
+| created_at | time of tweet | post time measured as (day hour:minute:second) | character | to the second | (2021-08-29 10:13:47) to (2021-09-10 15:40:00) | ... | no missing data |
+| text | text of tweet | any characters contained within tweet | character | ... | ... | ... | no missing data |
+| place_type | place type of tweet location | X/Twitter geographic place type | character | based on X/Twitter categorization | city, neighborhood, poi, or NA | NA | about 94.79% of place_type missing |
+| coords_coords | coordinates | coordinates in a (x,y) format | list of numbers | ... | ... | c(NA, NA) | about 99.55% of coords_coords missing |
+| bbox_coords | bounding box coordinates | eight coordinates that form edges of a region | list of numbers | ... | ... | c(NA, NA, NA, NA, NA, NA, NA, NA) | about 94.79% of bbox_coords missing |
 
-
+## The following section showcases the method for using the X/Twitter API. This code no longer works, but it will be showcased for transparency.
+## Skip to load original search results
 
 ## Set up Twitter Application 
 
@@ -350,67 +343,34 @@ november_raw <- rehydratoR(twitter_token$app$key, twitter_token$app$secret,
 
 ## Prior observations  
 
-Prior experience with the study area, prior data collection, or prior observation of the data can compromise the validity of a study, e.g. through p-hacking.
-Therefore, disclose any prior experience or observations at the time of study pre-registration here, with example text below:
-
-At the time of this study pre-registration, the authors had _____ prior knowledge of the geography of the study region with regards to the ____ phenomena to be studied.
-This study is related to ____ prior studies by the authors
-
-For each primary data source, declare the extent to which authors had already engaged with the data:
-
-- [ ] no data collection has started
-- [ ] pilot test data has been collected
-- [ ] data collection is in progress and data has not been observed
-- [ ] data collection is in progress and __% of data has been observed
-- [ ] data collection is complete and data has been observed. Explain how authors have already manipulated / explored the data.
-
-For each secondary source, declare the extent to which authors had already engaged with the data:
-
-- [ ] data is not available yet
-- [ ] data is available, but only metadata has been observed
-- [ ] metadata and descriptive statistics have been observed
-- [ ] metadata and a pilot test subset or sample of the full dataset have been observed
-- [ ] the full dataset has been observed. Explain how authors have already manipulated / explored the data.
-
-If pilot test data has been collected or acquired, describe how the researchers observed and analyzed the pilot test, and the extent to which the pilot test influenced the research design.
+At the time of this preanalysis, we have obtained the full X/Twitter data we
+are going to use for this study. We have no prior conception of the potential 
+results that will come from this set of Hurricane Ida data except for brief
+research on the path of the hurricane. Our main objective of this replication
+is to use this data and successfully produce the figures featured in the original code. 
 
 ## Bias and threats to validity
 
-Given the research design and primary data to be collected and/or secondary data to be used, discuss common threats to validity and the approach to mitigating those threats, with an emphasis on geographic threats to validity.
-
-These include:
-  - uneven primary data collection due to geographic inaccessibility or other constraints
-  - multiple hypothesis testing
-  - edge or boundary effects
-  - the modifiable areal unit problem
-  - nonstationarity
-  - spatial dependence or autocorrelation
-  - temporal dependence or autocorrelation
-  - spatial scale dependency
-  - spatial anisotropies
-  - confusion of spatial and a-spatial causation
-  - ecological fallacy
-  - uncertainty e.g. from spatial disaggregation, anonymization, differential privacy
-
+The different normalization method (using Census API instead of X/Twitter data)
+may make it harder for us to compare certain figures to the original study.
+Additionally, the hotspot/cluster figure of the study may be affected by the
+modifiable areal unit problem, so we should be aware of the state population data
+we use during the normalization process. 
 
 ## Data transformations
 
-Describe all data transformations planned to prepare data sources for analysis.
-This section should explain with the fullest detail possible how to transform data from the **raw** state at the time of acquisition or observation, to the pre-processed **derived** state ready for the main analysis.
-Including steps to check and mitigate sources of **bias** and **threats to validity**.
-The method may anticipate **contingencies**, e.g. tests for normality and alternative decisions to make based on the results of the test.
-More specifically, all the **geographic** and **variable** transformations required to prepare input data as described in the data and variables section above to match the study's spatio-temporal characteristics as described in the study metadata and study design sections.
-Visual workflow diagrams may help communicate the methodology in this section.
+Starting from the raw files, we will bind the four files (rbind function) and
+then sort out the duplicates (distinct function).
+Then we will convert geographic information into lat/long coordinates.
+After, we will clean the text and parse out any stop words we would like to exclude.
 
-Examples of **geographic** transformations include coordinate system transformations, aggregation, disaggregation, spatial interpolation, distance calculations, zonal statistics, etc.
+Later, for the normalization, we must first add the county data.
+Then, we will join the tweets to the county data. 
+Lastly, we will create the spatial weight matrix along with the Getis-Ord G* Statistic.
 
-Examples of **variable** transformations include standardization, normalization, constructed variables, imputation, classification, etc.
+### Load the original search results
 
-Be sure to include any steps planned to **exclude** observations with *missing* or *outlier* data, to **group** observations by *attribute* or *geographic* criteria, or to **impute** missing data or apply spatial or temporal **interpolation**.
-
-
-
-### START HERE Load the original search results (planned deviation)
+**Planned Deviation**: This is where we load the Hurricane Ida data. 
 
 Students in the GEOG 323 Open Source GIScience course may download the original
 search results from the private course data repository: 
@@ -419,8 +379,7 @@ https://github.com/GIS4DEV/geog323data/raw/main/ida/tevent_raw2.RDS
 https://github.com/GIS4DEV/geog323data/raw/main/ida/tevent_raw3.RDS
 https://github.com/GIS4DEV/geog323data/raw/main/ida/tevent_raw4.RDS
 
-Save the four `.RDS` files to the `data/raw/private` folder and then load the
-??data with the code block below.
+Save the four `.RDS` files to the `data/raw/private` folder.
 
 ```{r load-original}
 tevent_raw1 <- readRDS(here("data", "raw", "private", "tevent_raw.RDS"))
@@ -578,6 +537,8 @@ ida_words %>%
 
 ### Analyze and graph word association
 
+**Unplanned deviation**: We changed the filter to 50 from 25 to make the figure clearer.
+
 ```{r word-association}
 # separate words and count frequency of word pair occurrence in tweets
 ida_word_pairs <- ida_text %>%
@@ -613,8 +574,6 @@ ida_word_pairs %>%
 
 First, you will need a Census API. You can sign up for one here: https://api.census.gov/data/key_signup.html
 
-cc327081abedfb1c97716df45c667ba54c59ee57
-
 ```{r census-api}
 census_api_key(dlgInput(
   "Enter a Census API Key",
@@ -633,7 +592,9 @@ counties <- get_acs(
 )
 ```
 
-### Select and save counties of interest and find density (planned deviation)
+### Select and save counties of interest and find density
+
+**Planned Deviation**: This is where we load data from the Census API for the normalization. 
 
 select only the states you want, with FIPS state codes
 look up fips codes here: 
@@ -698,6 +659,8 @@ ggplot() +
 Spatially join Dorian and November tweets to counties and save counties
 as `counties_tweet_counts.RDS`
 
+**Planned Deviation**: This is where we change the normalization process to use Census data. 
+
 ```{r join-tweets-to-counties}
 ida_sf <- ida %>%
   st_as_sf(coords = c("lng", "lat"), crs = 4326) %>% # make point geometries
@@ -713,7 +676,7 @@ counties <- counties %>%
   left_join(ida_by_county, by = "GEOID") %>% # join count of tweets to counties
   mutate(ida = replace_na(ida, 0), # replace nulls with 0's
          popestimate = POP/10000, #using census population to mimic tweets per 10,000
-         idarate = ida/popestimate) 
+         idarate = ida/(popestimate)) 
 
 #normalization
 
@@ -731,10 +694,11 @@ Optionally, begin here by loading counties with Twitter data
 counties <- readRDS(here("data", "derived", "public", "counties_tweet_counts.RDS"))
 ```
 
+**Note**: The original code used "dorrate," but we replaced it with "ndti."
 ```{r map ndti}
 ggplot() +
   geom_sf(data = counties, 
-    aes(fill = cut_interval(idarate, 5)), color = "grey", lwd=0.01) +
+    aes(fill = cut_interval(ndti, 5)), color = "grey", lwd=0.01) +
   scale_fill_brewer(palette = "GnBu") +
   guides(fill = guide_legend(title = "Normalized Difference Tweet Index")) +
   labs(title = "Hurricane Ida Twitter Activity") +
@@ -810,8 +774,8 @@ based on 1.96 as the 95% confidence interval for z-scores
 if your results don't have values in each of the 5 categories, you may need
 to change the values & labels accordingly.
 
-Can we figure out a way to include the neighborhood surrounding each significant
-cluster?
+**Unplanned Deviation**: I changed the line color from white to gray to help see
+county boundaries. 
 
 ```{r map-hotspots}
 # classify by significance levels
@@ -829,7 +793,7 @@ rm(siglevel)
 
 # map results!
 ggplot() +
-  geom_sf(data = counties, aes(fill = sig), color = "white", lwd = 0.1) +
+  geom_sf(data = counties, aes(fill = sig), color = "gray", lwd = 0.1) +
   scale_fill_manual(
     values = c("#0000FF80", "#8080FF80", "#FFFFFF80", "#FF808080", "#FF000080"),
     labels = c("low", "", "insignificant", "", "high"),
