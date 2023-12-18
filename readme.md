@@ -1,4 +1,4 @@
-# Replication of Hurricane Dorian Twitter Study with Hurricane Ida
+# Replication of Holler (2021) Hurricane Dorian Twitter Study with Hurricane Ida Data
 
 ## Contributors
 
