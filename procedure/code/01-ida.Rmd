@@ -16,7 +16,7 @@ This analysis was developed with assistance from:
 tutorial on EarthLab at: 
 https://www.earthdatascience.org/courses/earth-analytics/get-data-using-apis/use-twitter-api-r/
 - Michael Minn's *Basic Spatial Point Pattern Analysis in R* tutorial at: http://michaelminn.net/tutorials/r-point-analysis/
-- Help from fellow student Elise Chan
+- Help from fellow student [Elise Chan](https://eliseylchan.github.io/)
 
 # Abstract
 
@@ -58,7 +58,7 @@ This is a replication of this [study of Hurricane Dorian](https://github.com/GIS
 The original study archetype was observational, as it was comparing X/Twitter data for the trending news surrounding #Sharpiegate and Hurricane Dorian.
 
 Holler (2021) focused on the research question surrounding whether the trending news and social media content (#Sharpiegate) regarding a false narrative of risk would cluster along the real hurricane (Dorian) track. 
-Using a temporal analysis graph, a content analysis graph, a map of X/Twitter activity, and a hotspot map, Holler (2021) visualizes patterns of the observed tweets. 
+Using a temporal analysis graph, a content analysis graph, a map of X/Twitter activity, and a hot spot map, Holler (2021) visualizes patterns of the observed tweets. 
 
 This replication will use X/Twitter data surrounding Hurricane Ida. We attempt to successfully replicate the figures presented in the original Holler (2021) study. 
 
@@ -68,6 +68,14 @@ This replication will use X/Twitter data surrounding Hurricane Ida. We attempt t
 
 Load the R project saved in the root directory of this repository, so that the
 working directory is the root directory of the repository.
+
+```{r upload crucial packages}
+install.packages("installr")
+
+library(installr)
+
+updateR()
+```
 
 ```{r chunk setup, include = FALSE, message = FALSE, warning = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -353,7 +361,7 @@ is to use this data and successfully produce the figures featured in the origina
 
 The different normalization method (using Census API instead of X/Twitter data)
 may make it harder for us to compare certain figures to the original study.
-Additionally, the hotspot/cluster figure of the study may be affected by the
+Additionally, the hot spot/cluster figure of the study may be affected by the
 modifiable areal unit problem, so we should be aware of the state population data
 we use during the normalization process. 
 
@@ -364,7 +372,7 @@ then sort out the duplicates (distinct function).
 Then we will convert geographic information into lat/long coordinates.
 After, we will clean the text and parse out any stop words we would like to exclude.
 
-Later, for the normalization, we must first add the county data.
+Later, for the normalization, we must first add the county data from the Census API.
 Then, we will join the tweets to the county data. 
 Lastly, we will create the spatial weight matrix along with the Getis-Ord G* Statistic.
 
@@ -606,9 +614,11 @@ We chose to observe the Eastern coast of the continental United States to cover 
 counties <- filter(
   counties,
   STATEFP %in% c(
-    "54", "51", "50", "47", "45", "44", "42", "39", "37", "36", "05", "01",
+    "12", "11", "10", "09", "48", "40", "20", "19", "26", "55", "27", "38",
+    "46", "31", "35", "08", "54", "51", "50", "47", "45", "44", "42", "39",
     "34", "33", "29", "28", "25", "24", "23", "22", "21", "18", "17", "13",
-    "12", "11", "10", "09"
+    "37", "36", "05", "01"
+
   )
 ) %>% 
   rename(POP = "B01003_001E", MOE = "B01003_001M") %>% 
@@ -650,7 +660,7 @@ ggplot() +
     axis.title.x = element_blank(),
     axis.title.y = element_blank()
   ) +
-  xlim(-96, -67) +
+  xlim(-110, -67) + #note: changed the xlim to include more states in the visualization
   ylim(24, 47)
 ```
 
@@ -707,7 +717,7 @@ ggplot() +
     axis.title.x = element_blank(),
     axis.title.y = element_blank()
   ) +
-  xlim(-96, -67) +
+  xlim(-110, -67) +
   ylim(24, 47)
 ```
 
@@ -808,13 +818,60 @@ ggplot() +
   )
 ```
 
-# Results
-
-The 
-
 # Discussion
 
-The
+## Temporal and Frequency Analysis
+The figure showcasing the temporal trends of the Hurricane Ida X/Twitter data
+highlights peaks of social media activity when the hurricane touched Louisiana and
+Northeast. 
+The word frequency analysis showcased a high frequency of words such as "flood," 
+"recovery," and "Louisiana."
+Both of these figures help to visualize trends of X/Twitter activity and are especially
+helpful in getting a general understanding of the data. 
+
+## Word Association Analysis
+
+The word association analysis showcases two major clusters of topics: one surrounding
+power outages and one focused more on flooding. 
+Other topics that appear include tweets about delayed reporting and climate change.
+This figure gives more context on the most common topics within the data set, and 
+it can also showcase other topics of interest that aren't directly connected to 
+the weather reports of the specific Hurricane. 
+
+## Tweet Location and Activity Analysis
+
+The figures presenting the tweet locations showcase higher activity along the 
+coasts of Louisiana and Florida. 
+Additionally, there is also very high activity along the Northeast/the Mid-Atlantic.
+After the normalization using population data from the Census, the tweet activity
+figure showcases greater activity (normalized by country population) in Louisiana.
+The results of these two figures help us to see how population information affects our
+analysis of Hurricane Ida X/Twitter data. 
+
+## Tweet Cluster Analysis
+
+The Tweet Cluster analysis showcases the highest/largest hot spots within the Southern coast of 
+Louisiana and Mississippi and along the Northeast/Mid-Atlantic coast.
+However, there are also more sparse/smaller hot spots in Texas and the Midwest.
+These unexpected hot spots could be observed in future reproductions using this data set. 
+
+# Conclusion
+
+Our adjustments to the computational environment were successful, as the code
+worked with the Hurricane Ida with only few adjustments when using the "remote"
+and "rtweet" packages.
+The new normalization showcased results that were weighted using Census
+population data.
+This resulted in helpful figures that showcased X/Twitter activity, locations,
+and clusters.
+The inclusion of the discussion and conclusion sections help to explain how 
+the results pertain to Hurricane Ida data.
+
+The replication of the Holler (2021) study was successfully as were able to 
+replicate all of the original figures. 
+Though the X/Twitter API has more barriers to tweet information now, this replication
+indicates the general procedure of this modified Holler (2021) study can be used to examine
+X/Twitter trends of other events/natural disasters. 
 
 # Integrity Statement
 
