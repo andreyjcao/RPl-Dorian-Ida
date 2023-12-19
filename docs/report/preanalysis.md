@@ -120,7 +120,7 @@ is to use this data and successfully produce the figures featured in the origina
 The different normalization method (using Census API instead of X/Twitter data)
 may make it harder for us to compare certain figures to the original study.
 Additionally, the hotspot/cluster figure of the study may be affected by the
-modifiable areal unit problem, so we should be aware of the state population data
+the modifiable areal unit problem, so we should be aware of the state population data
 we use during the normalization process. 
 
 ### Data transformations
@@ -141,8 +141,8 @@ One objective of this replication is to adjust the computational environment in
 case any of the packages have updated and are no longer usable with the code from
 Holler (2021). Another main objective of this replication is to adjust the 
 normalization process to use Census data rather than X/Twitter data. With these
-improvements and modifications, the Hurricane Ida tweet data should produce 
-four figures. Lastly, I will explain the replication with a discussion and 
+improvements and modifications, the Hurricane Ida tweet data should successfully
+replicate the figures. Lastly, I will explain the replication with a discussion and 
 conclusion section after the analysis. 
 
 ## Results
@@ -153,16 +153,16 @@ addition of the groundhog package.
 The normalization adjustment will affect the figure titled 'NDTI map,' as the
 figure will reflect a weighting based on Census data. 
 The discussion and conclusion will provide a thorough explanation of the
-modifications along with explanation of unplanned deviations. 
+modifications along with an explanation of unplanned deviations. 
 
 ## Discussion
 
 If the adjustments to the computational environment are successful, then the code
-should work with the Hurricane Ida with few adjustments to the rest of the code.
+should work with the Hurricane Ida data with only a few adjustments to the rest of the code.
 The new normalization should showcase results that are weighted using Census
 population data and make it so Hurricane Ida data can be weighted without additional
 X/Twitter data. 
-The discussion and conclusion should help future researchers to understand our
+The discussion and conclusion should help future researchers understand our
 modifications in this replication along with the context of the original study. 
 
 ## Integrity Statement
