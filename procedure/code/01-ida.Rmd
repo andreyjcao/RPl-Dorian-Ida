@@ -3,8 +3,8 @@ title: "Hurricane Ida on Twitter"
 author: "Joseph Holler, Andrey Cao"
 date: "12/15/2023"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 # Hurricane Ida on X/Twitter
@@ -71,7 +71,7 @@ This replication will use X/Twitter data surrounding Hurricane Ida. We attempt t
 Load the R project saved in the root directory of this repository, so that the
 working directory is the root directory of the repository.
 
-```{r chunk setup, include = FALSE, message = FALSE, warning = FALSE}
+```{r chunk setup, include = FALSE, message = FALSE, warning = FALSE, eval = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
 # install r version from 9-10-2021
@@ -118,21 +118,36 @@ Enter '3' (None) when prompted.
 ```{r upload crucial packages}
 
 # Install the 'remotes' package if you haven't already
-install.packages("remotes")
+#install.packages("remotes")
 # Load the 'remotes' package
 library(remotes)
-
+library(here)
 # installing a previous version of rtweet
 # in 2021, would have been version 0.7.0.
-install.packages("devtools")
-library(devtools)
-install_version("rtweet", version = "0.7.0",
-                repos = "https://cran.r-project.org")
+#install.packages("devtools")
+#library(devtools)
+#install_version("rtweet", version = "0.7.0",
+#                repos = "https://cran.r-project.org")
 library(rtweet)
+
+#for knitting
+packages <- c(
+  "here", "svDialogs", "tidyverse",
+  "tidytext", "tm", "igraph", "ggraph",
+  "tidycensus", "sf", "spdep"
+)
+
+package_check <- lapply(
+  packages,
+  FUN = function(x) {
+    if (!require(x, character.only = TRUE)) {
+      library(x, character.only = TRUE)
+    }
+  }
+)
 ```
 
-
-```{r save R processing environment}
+```{r save R processing environment, eval=FALSE}
 # save the R processing environment, including date in file name
 writeLines(
   capture.output(sessionInfo()),
