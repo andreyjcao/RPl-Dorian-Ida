@@ -2,7 +2,9 @@
 title: "Hurricane Ida on Twitter"
 author: "Joseph Holler, Andrey Cao"
 date: "12/15/2023"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 # Hurricane Ida on X/Twitter
