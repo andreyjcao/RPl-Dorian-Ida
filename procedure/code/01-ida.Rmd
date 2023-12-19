@@ -69,14 +69,6 @@ This replication will use X/Twitter data surrounding Hurricane Ida. We attempt t
 Load the R project saved in the root directory of this repository, so that the
 working directory is the root directory of the repository.
 
-```{r upload crucial packages}
-install.packages("installr")
-
-library(installr)
-
-updateR()
-```
-
 ```{r chunk setup, include = FALSE, message = FALSE, warning = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
@@ -130,9 +122,11 @@ library(remotes)
 
 # installing a previous version of rtweet
 # in 2021, would have been version 0.7.0.
-install_version("rtweet", version = "0.7.0")
+install.packages("devtools")
+library(devtools)
+install_version("rtweet", version = "0.7.0",
+                repos = "https://cran.r-project.org")
 library(rtweet)
-
 ```
 
 
